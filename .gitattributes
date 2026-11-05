@@ -1,0 +1,11 @@
+* text=auto
+*.ipynb text eol=lf
+# Preserve historical notebook bytes and their recorded SHA256 values.
+reference/*.ipynb -text whitespace=cr-at-eol
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.tex text eol=lf
+*.pdf binary
+*.png binary

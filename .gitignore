@@ -1,0 +1,30 @@
+# Local environments and tools
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+
+# Generated experiments, figures, logs and executed notebooks
+outputs/
+*.tmp
+
+# TeX build products (source/PDF proposal lives in docs)
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Videos are handed off by link; don't put large binaries in Git
+*.mp4
+*.mov
+*.mkv

@@ -1,0 +1,281 @@
+% !TeX program = xelatex
+% Compile: xelatex ARIN7101_Context_Bandit_Project_Plan_Formal.tex (twice)
+% Alternative: tectonic ARIN7101_Context_Bandit_Project_Plan_Formal.tex
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=22mm,top=21mm,bottom=22mm,headheight=15pt]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+\IfFontExistsTF{Arial}{\setsansfont{Arial}}{\setsansfont{TeX Gyre Heros}}
+\IfFontExistsTF{Courier New}{\setmonofont[Scale=0.85]{Courier New}}{\setmonofont[Scale=0.85]{Latin Modern Mono}}
+\IfFontExistsTF{Songti SC}{\setCJKmainfont[AutoFakeBold=2]{Songti SC}}{\setCJKmainfont[BoldFont=FandolSong-Bold]{FandolSong-Regular}}
+\IfFontExistsTF{Hiragino Sans GB}{\setCJKsansfont{Hiragino Sans GB}}{\setCJKsansfont{FandolHei-Regular}}
+\usepackage{amsmath,amssymb,booktabs,tabularx,array,enumitem,xcolor,fancyhdr,titlesec}
+\usepackage{hyperref}
+\definecolor{ink}{HTML}{203E50}
+\definecolor{accent}{HTML}{24756D}
+\definecolor{muted}{HTML}{5C6B74}
+\hypersetup{colorlinks=true,linkcolor=ink,urlcolor=accent,pdftitle={ARIN7101 正式研究计划：面向长对话的贝叶斯自适应上下文选择},pdfauthor={ARIN7101 五人项目组}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{ink}ARIN7101 / 正式研究计划}
+\fancyhead[R]{\small\sffamily\color{muted}2026年11月4日 · v4}
+\fancyfoot[L]{\footnotesize\color{muted}受控模拟 · 五人协作 · 2--3周}
+\fancyfoot[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\titleformat{\section}{\Large\sffamily\color{ink}\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\sffamily\color{ink}\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{6pt}{12pt}
+\titlespacing*{\subsection}{0pt}{10pt}{5pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt}
+\renewcommand{\baselinestretch}{1.15}
+\renewcommand{\arraystretch}{1.28}
+\setlist[itemize]{leftmargin=1.4em,itemsep=3pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.5em,itemsep=3pt,topsep=3pt}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\code}[1]{\texttt{\small #1}}
+\newcommand{\note}[1]{{\small\color{muted}#1\par}}
+\newcommand{\pagetitle}[2]{\section{#1}\note{#2}}
+\begin{document}
+
+{\small\sffamily\color{accent}STATISTICS IN ARTIFICIAL INTELLIGENCE / PROJECT PROPOSAL}\par
+\vspace{5pt}
+{\LARGE\sffamily\bfseries\color{ink}面向长对话的贝叶斯自适应上下文选择}\par
+{\large\sffamily 基于问题特征的 Thompson Sampling 受控模拟研究}\par
+{\normalsize Bayesian Adaptive Context Selection for Long Conversations\\
+A Controlled Study of Question-Aware Thompson Sampling}\par
+\note{研究类型：受控模拟（Controlled Simulation）\quad 团队规模：5人\quad 计划周期：14天主线，最长21天}
+\vspace{3pt}
+\section{研究背景与研究目标}
+\subsection{背景与问题}
+长对话中的问题可能依赖刚刚讨论的对象，也可能回溯较早出现的项目。例如，“它现在使用什么数据集？”需要解析指代；“项目P2的截止日期是什么？”则需要检索历史事实，并排除已经失效的旧版本。直接保留更多历史会增加输入长度，而只保留最近消息可能丢失必要证据。因此，上下文选择需要同时考虑回答正确性与输入成本。
+
+本项目将四种上下文策略视为四个可选择的“臂”。系统在每轮回答前选择一个臂，在得到该臂的正确性反馈后更新信念。核心问题是：\textbf{利用当前问题特征的贝叶斯选择器，能否比预先选定的固定策略获得更高的平均效用？}
+
+\subsection{目标与可检验问题}
+\begin{enumerate}
+\item \textbf{明确策略取舍。} 在近期追问与历史查询两类需求下，比较四种策略的正确率、输入成本和旧值错误，解释选择上下文的必要性。
+\item \textbf{检验主方法。} 在稳定需求与需求突变两个场景中，比较利用问题特征的LaplaceCTS与该场景在开发集上选出的最佳固定策略。
+\item \textbf{解释在线学习。} 以不使用问题特征建模成功率的Thompson Sampling（TS）作次比较，以人工规则路由作参考，展示反馈、后验与选臂之间的关系。
+\item \textbf{形成可复现证据。} 交付冻结配置、运行代码、对话级统计和图表，并使五位成员分别承担可核查、可讲述的研究任务。
+\end{enumerate}
+
+\subsection{研究范围与贡献定位}
+本研究使用程序生成的英文模板对话和确定性规则回答器，不调用真实LLM，不使用外部数据集，也不研究模型内部记忆。预期贡献在于任务设计的理解与核查、已有贝叶斯方法的组合应用、可复现评估以及证据解释；不主张提出新的bandit算法。
+
+\newpage
+\pagetitle{研究任务、数据与评价口径}{对应Notebook §2--3；主责M1（数据）与M2（策略）。}
+\subsection{对话生成与两类需求}
+生成器维护6个项目，每个项目有4种属性：数据集、编程语言、评价指标与截止日期。每轮依次加入当前讨论对象（focus）、一条事实及短干扰；事实以0.25概率更新，否则复述当前值。初始化时，25\%的项目--属性组合包含多个历史版本，并通过同义表达增加检索难度。
+
+近期题使用“its”指向当前focus；历史题显式指定非当前focus的项目。真值为截至该轮的最新有效值。每条对话包含300题，场景如下：
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{25mm}YY@{}}\toprule
+场景 & 近期题比例 & 研究用途 \\\midrule
+stable & 全程90\% & 观察稳定需求下的学习收益与探索代价。\\
+abrupt & 前150题90\%，后150题10\% & 观察需求由近期追问转向历史查询后的选择变化。\\\bottomrule
+\end{tabularx}\end{center}
+\note{切换发生在第151题开始；代码从0计数，因此边界为\code{t=150}。这里改变的是提问需求分布，不额外改变回答机制。}
+
+\subsection{四种候选上下文策略}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{35mm}Yp{17mm}@{}}\toprule
+策略名称 & 选择规则 & 预算 \\\midrule
+\code{recent\_short} & 倒序取最近最多3条消息，超出预算即停止。 & 128\\
+\code{recent\_long} & 连续取近期消息，超出预算即停止。 & 512\\
+\code{tfidf} & 用原问题作TF--IDF检索，取最多8个候选；按时间排序供回答。 & 256\\
+\code{resolved\_tfidf} & 用公开历史消解指代、归一化同义词后检索；指代题可额外加入最新focus消息。 & 256\\\bottomrule
+\end{tabularx}\end{center}
+\note{预算只约束所选上下文，单位是正则表达式计数的proxy units。强检索策略可能在8个检索候选之外另加1条focus，最终仍受256预算约束。}
+
+\subsection{正确性、成本与效用}
+四臂共用规则回答器：解析问题对象与属性，采用所选上下文中时间上最后一条可解析事实；缺少证据时输出\code{UNKNOWN}。定义
+\[
+Y_{t,a}=\mathbf{1}\{\text{回答等于当前真值}\},\qquad
+U_{t,a}=Y_{t,a}-\lambda\frac{C_{t,a}}{C_{\rm ref}},\quad
+\lambda=0.5,\ C_{\rm ref}=512.
+\]
+其中，$C_{t,a}$包括系统指令、所选上下文和问题的总输入长度。报告平均效用的同时报告准确率、平均成本、旧值错误率与证据覆盖率；覆盖率检查最新证据消息是否入选，因事实可能重复出现，它不等于准确率。
+
+所有候选均先构造以确定其成本。候选构造耗时另行记录，不计入上述效用，也不能由proxy长度推断真实token费用或LLM推理加速。
+
+\newpage
+\pagetitle{方法设计与信息边界}{对应Notebook §4；主责M3，M4复核实现与实验接口。}
+\subsection{TS：用成功与失败更新每个臂的信念}
+对每个臂$a$设置正确率先验$p_a\sim\mathrm{Beta}(1,1)$。若过去对该臂观察到$S_a$次正确、$F_a$次错误，则
+\[
+p_a\mid\mathcal D_a\sim\mathrm{Beta}(1+S_a,1+F_a).
+\]
+每轮从各臂后验采样$\widetilde p_{t,a}$，再按
+\[
+a_t=\arg\max_a\left(\widetilde p_{t,a}-0.5C_{t,a}/512\right)
+\]
+选择策略，只更新被选臂的成功或失败计数。TS通过采样保留探索机会；其成功率模型不使用问题特征，但仍知道当前各臂成本。“不看问题”只是对这一建模差异的简写。
+
+\subsection{LaplaceCTS：让成功率随问题特征变化}
+主方法为每臂建立贝叶斯logistic模型。令
+\[
+x_t=(1,\mathbf1\{\text{含项目名}\},\mathbf1\{\text{含its}\})^\top,
+\quad P(Y_{t,a}=1\mid x_t,w_a)=\sigma(x_t^\top w_a),
+\quad w_a\sim N(0,I).
+\]
+使用该臂\textbf{实际被选择时}得到的数据$\mathcal D_a$求MAP：
+\[
+\widehat w_a=\arg\min_w\left\{
+\sum_{(x,y)\in\mathcal D_a}\big[\log(1+e^{x^\top w})-yx^\top w\big]
++\tfrac12w^\top w\right\}.
+\]
+在MAP附近作Laplace近似：
+\[
+p(w_a\mid\mathcal D_a)\approx N(\widehat w_a,H_a^{-1}),\qquad
+H_a=I+X_a^\top W_aX_a,
+\]
+其中$W_a$的对角元为$\widehat p_i(1-\widehat p_i)$。采样$\widetilde w_a$后，以$\sigma(x_t^\top\widetilde w_a)$替代TS的采样正确率，使用同一成本惩罚选臂。
+
+实现沿用讨论稿：每臂每累计5次新反馈重新拟合一次；期间使用上一近似后验，初始使用先验。每条新对话重新初始化，不从开发集迁移拟合参数。本模板中项目名与its两个特征互补，存在共线性；高斯先验提供正则化，但单个系数不作独立效应解释。
+
+\subsection{比较对象与可见信息}
+固定策略始终选择同一臂。RuleRouter按已知模板，对指代题用短窗、其他题用强检索，仅为人工规则参考，不是理论上限。DTS只保留开发集折扣参数表，UCB/Markov仅作可选备用。
+
+选择器可见当前问题与候选成本；候选构造器可见截至本轮的公开历史。真值、题型标签、场景状态和未选臂奖励仅供评估器使用。模拟中的即时正确性反馈是明确假设。两类学习器的结构不同，二者差异不构成对“问题特征作用”的严格因果消融。
+
+\newpage
+\pagetitle{与课程知识点的对应关系}{以下页码均按工作区课程PDF页序核对；不是按上课日期推断章节。}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{31mm}>{\raggedright\arraybackslash}p{38mm}Y@{}}\toprule
+课程材料 & 知识点 & 本项目如何使用与展示 \\\midrule
+Lecture 1\newline pp.3--5 & 统计建模、估计、区间与不确定性 & 明确数据生成机制与目标量；解释样本结果及其不确定性。由M1引入，M4落实评估。\\
+Lecture 2\newline pp.16--22 & Bernoulli/Binomial似然、Beta先验与共轭更新 & 将答对/答错视为二元反馈，得到Beta后验。M3给出一次手算更新并对应TS代码。\\
+Lecture 2\newline pp.49--50 & 后验众数、MAP附近的高斯近似 & 对每臂logistic后验求MAP，用Hessian逆近似协方差。M3解释后验采样如何影响选择。\\
+Lecture 6\newline pp.11--15 & 多臂老虎机、累计奖励、探索与利用 & 四种上下文策略是四臂；通过正确性反馈探索，兼顾已知成本。M2/M3共同说明。\\
+Lecture 6\newline pp.27--30 & Thompson Sampling与Beta后验采样 & TS直接使用；LaplaceCTS将后验采样推广到带问题特征的成功率模型。\\
+Lecture 4\newline pp.32--41 & 独立数据划分、验证与选择偏差 & 开发集选择固定基线；在独立新对话上评估已冻结的学习程序，不按测试结果改参数。M4负责。\\\bottomrule
+\end{tabularx}\end{center}
+
+\subsection{课程概念与项目扩展的区分}
+LaplaceCTS是将Lecture 2的近似后验思想与Lecture 6的后验采样决策结合的项目实现，不能表述为课件直接提供了完整算法。本项目的对话级配对bootstrap和Bonferroni区间属于评估设计，不将其冒称为上表页码直接讲授的内容。
+
+Lecture 5的Markov链只对应备用场景；主实验的确定时刻需求突变不需要将其包装为Markov链研究。Lecture 3涉及的其他近似推断方法并未用于主线，不为覆盖更多章节而增加无关方法。
+
+\subsection{成员应达到的理解标准}
+\begin{itemize}
+\item M1/M2能够从一段实际生成的历史指出指代对象、最新证据与失败原因，区分正确率、覆盖率和成本。
+\item M3能够说明Beta更新、MAP目标函数、Hessian与后验采样；例如先验Beta(1,1)在2次正确、1次错误后成为Beta(3,2)。
+\item M4能够说明为什么一条对话是统计重采样单位，以及为什么不能用正式测试选择最有利的固定基线。
+\item M5能够把每个主要结论对应到图表和数据，并准确说明模拟所能支持的结论范围。
+\end{itemize}
+\note{课程资料位置：\code{9.3/Lecture 1.pdf}、\code{9.10/Lecture 2.pdf}、\code{10.8/Lecture 4.pdf}、\code{10.29/Lecture 6.pdf}。完整材料说明见第8页。}
+
+\newpage
+\pagetitle{实验设计、统计分析与验收规则}{对应Notebook §5--7；主责M4，M3复核。正式实验仍待小组核查与冻结后执行。}
+\subsection{数据划分与冻结内容}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{28mm}p{41mm}Y@{}}\toprule
+阶段 & 规模 & 用途 \\\midrule
+开发集 & 每场景3条，每条300题 & 检查生成器与策略；按场景选择最佳固定臂；选择DTS补充参数。\\
+演示评估 & 每场景6条，每条300题 & 验证代码与图表；已查看结果不得充当正式独立证据。\\
+正式评估 & 每场景30条，每条300题 & 共60条独立对话、18,000题；固定方案下检验主问题。\\\bottomrule
+\end{tabularx}\end{center}
+各方法在同一批对话上比较。TS与LaplaceCTS使用算法种子17和37，先在对话内平均，不将其视为新增独立样本。开发数据不用于预训练正式对话的参数；正式评估允许按既定程序逐题接收已选反馈并在线学习。
+
+冻结前固定四臂、预算、效用权重、特征、先验、更新频率、场景、样本量、种子、主次比较和分析规则。保存配置、代码哈希、Notebook快照与人工核查证据。新正式种子须未使用且不小于1,000,000；程序检查开发/评估种子不重叠，正式目录禁止覆盖。
+
+\subsection{主比较与不确定性}
+每场景的固定基线$b_s$仅由开发集平均效用确定。对话$i$的配对差为
+\[
+d_{i,s}=\overline U_{i,s}^{\rm LaplaceCTS}-\overline U_{i,s}^{b_s},
+\qquad \widehat\Delta_s=\frac1{30}\sum_{i=1}^{30}d_{i,s}.
+\]
+在每个场景内对整条对话重采样2,000次，得到配对bootstrap区间。报告95\%区间及用于两个主比较的Bonferroni校正97.5\%区间；后者在bootstrap近似覆盖成立时控制整体错误率，不能宣称有限样本精确保证。主比较用校正区间判断正收益，TS相对同一基线的差异只作探索性报告。
+
+\begin{itemize}
+\item 校正区间下界大于0：支持该场景下相对固定基线的正收益。
+\item 区间包含0：证据不足；不能直接断言两种方法等效。
+\item 点估计达到0.02效用/题：达到预设实际收益参考；若声称“收益至少0.02”，需区间下界也超过0.02。
+\end{itemize}
+
+\subsection{过程检查与结果纪律}
+M1/M2人工审查10题，覆盖近期/历史查询及版本情况；自动检查完整历史回答、空上下文、预算、时间排序与仅更新所选臂。M4核对每场景对话数、结果表和图表完整性。
+
+正式结果无论正负均保留，不更换测试种子、参数或基线直到显著。若发生程序错误，保留失败目录，记录错误、修正及数据是否已查看；修正后的分析明确标注，不伪装成从未看过数据的原始确认性检验。累计效用差仅相对开发固定基线，不称为相对最优策略的理论regret。
+
+\newpage
+\pagetitle{五人分工、验收与交接}{成员编号沿用讨论稿，真实姓名由小组在Notebook进度板中填写。}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{20mm}Yp{45mm}@{}}\toprule
+成员/主讲 & 目标与具体工作 & 验收物与下一步 \\\midrule
+M1\newline 数据与背景\newline 约3分钟 & 说明为什么长对话需要选择上下文；理解生成器与真值；逐题审查10个开发样本；整理focus、its、新旧版本示例。 & 填写10行审计结论，准备1页问题说明及示例；交M2复核，交M4作为冻结证据；随后讲解图1/2。\\
+M2\newline 策略与成本\newline 约3分钟 & 检查四臂预算、检索排序、规则回答器；比较正确率/成本/旧值错误；解释coverage与accuracy的差别。 & 策略对照表、边界案例与成本说明；与M1关闭数据问题，交M3/M4确认接口；随后解释图3/4。\\
+M3\newline 贝叶斯方法\newline 约4分钟 & 手算Beta更新，理解logistic MAP与Laplace近似；核查只更新所选臂、每5次反馈拟合及每对话重置。 & 一页公式、自动检查记录和方法局限说明；交M4确认实现，复核正式运行中的异常；主讲方法。\\
+M4\newline 实验与统计\newline 约4分钟 & 汇总审计证据，开发选基线并冻结；执行正式模拟；按独立对话计算配对效应和区间。 & 配置/代码快照、manifest、主次统计表与图5--7解读；交M5并接受M3交叉复核。\\
+M5\newline 整合与呈现\newline 约3分钟 & 从第1天建立slides骨架；统一图表与术语；组织结果解释、局限讨论、试讲、录制及提交。 & 约15--16页slides、15--20分钟视频与提交清单；全组复核图文一致性及每人出镜情况。\\\bottomrule
+\end{tabularx}\end{center}
+
+\subsection{让分工成为可执行工作流}
+Notebook按M1--M5设置连续成员模块，集中说明目标、操作、验收与交接。代码顺序不变：审计导出保留在策略定义后，最终归档保留在绘图后。\code{team\_workspace/team\_progress.csv}保留姓名、状态、证据位置及下一动作。人工审计表提前生成于正式评估之前，不必等全部实验结束才检查数据。
+
+每人约8--12小时沿用讨论稿的工作量估计，实际受基础、电脑速度与问题数量影响。每位成员都应读懂相关实现并留下分析证据；“运行过代码”本身不构成完整研究贡献。
+
+\subsection{协作与版本管理}
+\begin{itemize}
+\item M4维护最终合并Notebook；其他成员在副本上按负责章节修改并提交差异，避免多人覆盖同一文件。
+\item M1与M2互查数据和策略，M3与M4互查方法和统计；M5检查全篇术语、图表、结果模式及叙述一致性。
+\item 实时更新进度，明确阻塞问题、负责人及下一交付时间。计算成功与人工验收完成分开记录。
+\end{itemize}
+
+\newpage
+\pagetitle{2--3周实施进度与风险应对}{以项目启动日为D1；14天完成主线，最多21天用于修复与交付缓冲。实际提交日须以Moodle通知为准。}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{22mm}p{24mm}YY@{}}\toprule
+时间 & 负责人 & 关键活动 & 阶段完成标准 \\\midrule
+D1--2 & 全员；M5搭骨架 & 安装环境、从头运行demo；认领章节；阅读对应lecture。 & 人人能够说明研究问题、自己的任务和下一交接人。\\
+D3--4 & M1--M4 & 10题人工审计、策略与方法核查；确认开发固定基线和统计规则。 & 阻塞错误关闭，审计有记录，方案与代码保存后冻结。\\
+D5--6 & M4主责，M3复核 & 使用新种子正式运行；检查数据完整性；导出效应与区间。 & 每场景30条对话；所有结果保留；manifest及关键文件齐全。\\
+D7--9 & 全员，M5整合 & 解读七图；撰写约15--16页slides和各自讲稿。 & 每个主要结论对应数据，不混淆开发、demo和formal。\\
+D10--11 & 全员 & 交叉核查，至少一次完整试讲，调整叙述和时长。 & 目标17分钟，处于15--20分钟要求内；方法与局限解释清楚。\\
+D12--14 & M5统筹，全员 & 录制、导出slides PDF；检查音画及共享权限，完成提交准备。 & 每人讲述并在自己的部分出镜；课程方可直接访问材料。\\
+D15--21\newline （如可用） & 按问题归属分配 & 修复有记录的故障，完善解释、补充试讲和提交缓冲。 & 保留变更记录；不新增主实验或按显著性重选测试数据。\\\bottomrule
+\end{tabularx}\end{center}
+
+\subsection{主要风险与对应措施}
+\begin{itemize}
+\item \textbf{运行时间超预期：} 首次demo记录实际耗时，正式实验预留D5--6。TF--IDF逐题构造可能是主要成本；先排查错误与环境，不在看到结果后私自缩减样本量。
+\item \textbf{成员只执行、不理解：} 要求M1/M2给出可回查案例，M3手算一次后验，M4解释一条效应区间；M5用试讲检查是否能回答“为什么”。
+\item \textbf{结果不支持假设：} 保留负结果，结合准确率与成本解释失败，检查探索代价和模板限制；仍可完成课程研究目标。
+\item \textbf{结果和讲稿脱节：} 全部图表标明数据阶段；M5按统计表核对数值。图1--3属于流程或开发材料，不能包装成正式测试证据。
+\end{itemize}
+
+\subsection{两周版本的完成底线}
+完成两个主场景、四臂与两种学习器的既定比较、对话级统计、七张图、课程方法解释及局限说明。DTS仅保留开发参数表；Markov/UCB、新数据、真实LLM和额外消融不列入最低交付。
+
+\newpage
+\pagetitle{预期结果、最终交付与材料依据}{预期结果是待检验的研究方向；完成质量取决于证据与解释，不取决于是否得到正收益。}
+\subsection{预期发现与可接受的替代结论}
+预期近期追问与历史查询呈现不同的策略取舍；LaplaceCTS可能利用问题特征学习路由，在部分场景获得较高效用；TS可能在需求突变后体现较大探索或适应代价。若正式结果未支持这些预期，应报告效应大小和区间，并分析错误类型、成本与选择轨迹。RuleRouter可能优于学习器，这不构成实验失败。
+
+本项目只能支持固定合成机制、规则回答器和即时反馈假设下的结论。模板特征对题型具有较强区分能力；有限对话数、共享算法种子、候选构造开销及proxy成本都会限制外推。不能据此声称改进真实ChatGPT、降低实际API费用，或给出真实系统的适应时间保证。
+
+\subsection{七张图的证据链}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{9mm}p{42mm}Y@{}}\toprule
+编号 & 图表 & 预期用途 \\\midrule
+1/2 & 工作流 / 开发对话示例 & 解释信息可见性、指代与版本冲突。\\
+3/4 & 开发效用热图 / 准确率--成本图 & 描述策略取舍及准、省之间的关系。\\
+5/6 & TS与LaplaceCTS选择比例 / 累计效用差 & 描述突变前后选择变化及相对固定基线的收益轨迹。\\
+7 & 配对效应图 & 同时呈现效应大小、场景差异及95\%/97.5\%区间。\\\bottomrule
+\end{tabularx}\end{center}
+
+\subsection{交付与复现要求}
+\begin{itemize}
+\item \textbf{本次计划材料：} 正式计划书\code{.tex}与\code{.pdf}；整理后的团队Notebook；依赖清单、运行说明及原Notebook归档。
+\item \textbf{研究完成后：} 冻结配置、代码快照、环境版本、审计记录、逐轮结果、对话级统计、主次效应表，以及七图的PNG/SVG。正式实验由小组按本计划执行。
+\item \textbf{课程最终提交：} 15--20分钟汇报视频及slides PDF。五人均参与讲述并在各自部分出镜；共享链接须让课程方无需额外请求权限即可访问。计划书不是最终slides。
+\end{itemize}
+运行步骤及依赖见配套README。小组须据实注明采用的方法、库与代码，以及各成员的实际贡献。
+
+\subsection{材料依据与来源说明}
+{\small\begin{enumerate}[label={[\arabic*]},itemsep=2pt]
+\item \textit{ARIN7101 Project Guidelines}，pp.1--4：组队、交付、学术诚信与评分要求。具体截止日期待Moodle确认。工作区原件：\newline\path{ARIN_7101_Final_Project_Guidance.pdf}。
+\item 课程Lecture 1、2、4、6，具体文件及页码见第4页。方法推导与课程映射以这些本地原课件为准。
+\item \path{ARIN7101_Context_Bandit_Project_Plan-3.pdf}及原配套Notebook：沿用实验主线与核心实现，重整方法、分工与验收。
+\end{enumerate}}
+\end{document}

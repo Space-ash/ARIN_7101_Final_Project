@@ -1,0 +1,13 @@
+# 历史参考（两份完整实现均不作为当前工作入口）
+
+应用户要求保留修改前的release：**ARIN7101_Context_Bandit_Release_v1_Complete_Reference.ipynb**，共45个单元。它保留修改前的完整代码、说明及元数据，源代码哈希已与上一轮保存的运行快照manifest核对一致。文件SHA256：
+11dd498f4ed939c081e0bef9ab80d9353b5755ec6ed2c66fccdd37acdea64df1
+
+此文件用于后续对照；其中旧目录、已删除的执行脚本和“可直接跑通”的说明属于历史版本，不代表当前脚手架的使用方法。
+
+原始completed notebook保持原样，SHA256：
+b72a8e749f7188e0842abda7332a757ce9272235b0c0310900f6b8efc2b84afd
+
+它是此前AI完成的可行性验证，不是团队工作入口。release-2和工具不导入/执行该文件。成员先按任务独立研究与实现；若借鉴，说明来源、理解、修改和独立验证。复制代码、旧数字或图表不能标为本人研究成果。
+
+原计划在docs/proposal作背景；当前任务区间和接口以release-2与docs为准。
