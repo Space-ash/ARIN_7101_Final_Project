@@ -12,3 +12,6 @@ reference/*.ipynb -text whitespace=cr-at-eol
 
 # Preserve exact evidence bytes bound by the preparation package manifest.
 /deliverables/m4_formal_preparation_20261126/** -text whitespace=cr-at-eol
+
+# Preserve exact bytes bound by the complete development evidence manifest.
+/deliverables/M4_full_development_20261126/** -text whitespace=cr-at-eol,-blank-at-eof

@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-26",
+  "scope": "full_development_result_publication",
+  "base_commit": "afc8015d6f27ee85866b96c1fe1d28d4c3a160a4",
+  "dependency_pr": "https://github.com/Space-ash/ARIN_7101_Final_Project/pull/8",
+  "upstream_main": "0472e3220ea6215e89e72521b295297326dcd945",
+  "execution_repeated": false,
+  "formal_generated": false,
+  "formal_registry_empty": true,
+  "real_approvals_absent": true,
+  "evidence_files_verified": 46,
+  "evidence_manifest_sha256": "7790fdee922507395a2d6e0ae54a63eb828ed664a33b1ac253ef876563bcb462",
+  "result_document": {
+    "path": "docs/EXPERIMENT_RESULTS_DEVELOPMENT_20261126.md",
+    "sha256": "77262736b3217843cd6ea59f3b52802d2a009900f2b48210444942624eafe535"
+  },
+  "run_archives_verified": 10,
+  "run_files_verified": 1329,
+  "all_execution_snapshots_match_publication_base": true,
+  "protected_publication_files_unchanged": 51,
+  "raw_archive": {
+    "path": "outputs/archives/M4_full_development_20261126.zip",
+    "sha256": "54fe222e2662cced9e2fe00374fbf5b869284763ca5dc989a9acc6ce267452df",
+    "bytes": 15439766,
+    "files": 1379,
+    "zip_crc_verified": true,
+    "copied_run_hashes_verified": true,
+    "content": "Ten complete development run archives, original development source, execution plans and logs; no formal data.",
+    "in_git": false,
+    "remote_download_available": false
+  },
+  "scope_note": "Compact complete result tables, plans, audits and documentation are committed. Original outputs/ and raw ZIP remain local and require separate sharing; their hashes do not imply remote availability.",
+  "validation_note": "No experiments or prior 101-test suite rerun. This publication verifies existing evidence, original run hashes, source snapshots, protected files, links and staged bytes.",
+  "staged_evidence_hashes_verified": true,
+  "staged_result_document_hash_verified": true,
+  "staged_payload_files_before_this_record": 54,
+  "staged_payload_bytes_match_working_tree": true,
+  "archived_trailing_blank_lines_preserved": true,
+  "experiments_not_restarted": true
+}

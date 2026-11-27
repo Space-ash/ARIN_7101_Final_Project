@@ -3,7 +3,7 @@
 
 目标：受控合成长对话中的贝叶斯上下文选择，研究正确性与输入成本取舍。无需真实LLM、外部数据或API密钥。
 
-当前进度见 [2026-11-26 项目进度报告](project_progress_11.26.md)：M1–M3 核心实现和开发验证已完成；M4 已完成 E1 开发/demo 分析及 60 条正式实验准备，尚待人工确认、冻结和正式运行；M5 接口及最终汇报待交付。[成员进度表](team_workspace/team_progress.csv) · [正式实验人工确认清单](deliverables/m4_formal_preparation_20261126/HUMAN_CONFIRMATION.md)
+当前进度见 [2026-11-26 项目进度报告](project_progress_11.26.md)：M1–M3 核心实现和开发验证已完成；M4 已完成各阶段完整开发计算、E1 demo分析及60条正式实验准备，尚待人工确认、冻结和正式运行；M5 接口及最终汇报待交付。[成员进度表](team_workspace/team_progress.csv) · [正式实验人工确认清单](deliverables/m4_formal_preparation_20261126/HUMAN_CONFIRMATION.md)
 
 ## 从哪里开始
 1. 读notebook共同范围与本人的M1–M5任务区间，在team_workspace/team_progress.csv认领。
@@ -69,3 +69,5 @@ PowerShell激活：.\.venv\Scripts\Activate.ps1；macOS/Linux：source .venv/bin
 具体实验测什么、控制什么、如何解释结果，见 [实验设计与数学评估说明](docs/EXPERIMENT_DESIGN.md)。
 
 分阶段代码入口、短对话检查、完整开发实验与已有归档分析命令，见 [实验代码运行说明](docs/EXPERIMENT_EXECUTION.md)。新入口不启动正式实验。
+
+完整开发实验E0–E7（含预算）及A1–A7的计算与归档已完成，见[逐项结果与解释](docs/EXPERIMENT_RESULTS_DEVELOPMENT_20261126.md)。每场景3条已见开发对话，结果待研究审阅；60条正式实验仍未启动。

@@ -1,0 +1,172 @@
+{
+  "status": "passed",
+  "formal_generated": false,
+  "human_approval_generated": false,
+  "interpretation": "implementation_correctness_checks_not_effectiveness_or_human_acceptance",
+  "truth_checks": [
+    {
+      "scenario": "abrupt",
+      "seed": 130100,
+      "passed": true,
+      "question_count": 300
+    },
+    {
+      "scenario": "abrupt",
+      "seed": 130101,
+      "passed": true,
+      "question_count": 300
+    },
+    {
+      "scenario": "abrupt",
+      "seed": 130102,
+      "passed": true,
+      "question_count": 300
+    },
+    {
+      "scenario": "stable",
+      "seed": 130000,
+      "passed": true,
+      "question_count": 300
+    },
+    {
+      "scenario": "stable",
+      "seed": 130001,
+      "passed": true,
+      "question_count": 300
+    },
+    {
+      "scenario": "stable",
+      "seed": 130002,
+      "passed": true,
+      "question_count": 300
+    }
+  ],
+  "four_arm_reconstruction": {
+    "dialogues": 6,
+    "questions": 1800,
+    "rows": 7200,
+    "compared_fields": [
+      "question",
+      "qtype",
+      "state",
+      "y",
+      "cost",
+      "utility",
+      "coverage",
+      "outdated"
+    ],
+    "excluded_fields": [
+      "construction_ms"
+    ],
+    "public_prefix_only": true,
+    "future_history_invariance": "passed"
+  },
+  "online_table_equivalence": {
+    "scope_rule": "first_seed_per_scenario_complete_dialogue",
+    "dialogues": [
+      {
+        "scenario": "abrupt",
+        "seed": 130100,
+        "questions": 300
+      },
+      {
+        "scenario": "stable",
+        "seed": 130000,
+        "questions": 300
+      }
+    ],
+    "methods": [
+      "recent_short",
+      "recent_long",
+      "tfidf",
+      "resolved_tfidf",
+      "TS",
+      "LaplaceCTS",
+      "RuleRouter"
+    ],
+    "algorithm_seeds": [
+      17,
+      37
+    ],
+    "question_method_seed_steps": 8400,
+    "state_comparisons": 16828,
+    "state_fields": [
+      "mean",
+      "covariance",
+      "successes",
+      "failures",
+      "features",
+      "rewards"
+    ],
+    "rng_state_compared": true,
+    "stored_replay_matched": true
+  },
+  "member_handoff_fixtures": {
+    "m1": "passed",
+    "m2": "passed",
+    "m3": "passed",
+    "fixture_dialogue_seeds": [
+      910001,
+      910002,
+      910003
+    ]
+  },
+  "method_checks": [
+    {
+      "scenario": "abrupt",
+      "seed": 130100,
+      "beta_posterior": [
+        3,
+        2
+      ],
+      "map_gradient_norm": 7.373207354988772e-07,
+      "gradient_fd_max_error": 5.038980344096444e-11,
+      "hessian_fd_max_error": 1.8912649224489542e-11,
+      "covariance_min_eigenvalue": 0.38381511226206355,
+      "refit_every_selected_feedbacks": 5,
+      "reset_and_unchosen_reward_flip": "passed",
+      "methods": [
+        "recent_short",
+        "recent_long",
+        "tfidf",
+        "resolved_tfidf",
+        "TS",
+        "LaplaceCTS",
+        "RuleRouter"
+      ],
+      "algorithm_seeds": [
+        17,
+        37
+      ],
+      "replay_rows": 4200
+    },
+    {
+      "scenario": "stable",
+      "seed": 130000,
+      "beta_posterior": [
+        3,
+        2
+      ],
+      "map_gradient_norm": 7.373207354988772e-07,
+      "gradient_fd_max_error": 5.038980344096444e-11,
+      "hessian_fd_max_error": 1.8912649224489542e-11,
+      "covariance_min_eigenvalue": 0.38381511226206355,
+      "refit_every_selected_feedbacks": 5,
+      "reset_and_unchosen_reward_flip": "passed",
+      "methods": [
+        "recent_short",
+        "recent_long",
+        "tfidf",
+        "resolved_tfidf",
+        "TS",
+        "LaplaceCTS",
+        "RuleRouter"
+      ],
+      "algorithm_seeds": [
+        17,
+        37
+      ],
+      "replay_rows": 4200
+    }
+  ]
+}

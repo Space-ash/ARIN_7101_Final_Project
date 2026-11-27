@@ -1,0 +1,46 @@
+{
+  "experiment": "E3",
+  "operation": "analysis_only",
+  "source_run": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126\\outputs\\development\\pr_stage_e1_development_20261126",
+  "source_manifest_sha256": "1d2864d0585382fd7e51209b6bdd8fa27cc632f7d8524453668c13c35a0953d4",
+  "source_mode": "development",
+  "fixture": false,
+  "config": {
+    "T": 300,
+    "n_dev_per_scenario": 3,
+    "n_demo_per_scenario": 6,
+    "n_formal_per_scenario": 30,
+    "dev_seed": 130000,
+    "demo_seed": 730000,
+    "formal_seed": null,
+    "algorithm_seeds": [
+      17,
+      37
+    ],
+    "p_recent_stable": 0.9,
+    "p_recent_abrupt_before": 0.9,
+    "p_recent_abrupt_after": 0.1,
+    "update_probability": 0.25,
+    "initial_conflict_fraction": 0.25,
+    "budgets": {
+      "recent_short": 128,
+      "recent_long": 512,
+      "tfidf": 256,
+      "resolved_tfidf": 256
+    },
+    "lambda": 0.5,
+    "cost_reference": 512,
+    "refit_every": 5,
+    "prior_precision": 1.0,
+    "bootstrap_seed": 2026,
+    "n_bootstrap": 2000
+  },
+  "baselines": {
+    "abrupt": "resolved_tfidf",
+    "stable": "recent_short"
+  },
+  "variant": "default",
+  "creates_dialogues": false,
+  "inference": "supplementary exploratory analysis",
+  "statistics": null
+}

@@ -1,0 +1,15 @@
+scenario,metric,method,n,mean_rank,rank_one,analysis_role
+stable,utility,recent_short,3,3.0,best,exploratory
+stable,utility,recent_long,3,6.0,best,exploratory
+stable,utility,tfidf,3,7.0,best,exploratory
+stable,utility,resolved_tfidf,3,5.0,best,exploratory
+stable,utility,TS,3,4.0,best,exploratory
+stable,utility,LaplaceCTS,3,2.0,best,exploratory
+stable,utility,RuleRouter,3,1.0,best,exploratory
+abrupt,utility,recent_short,3,5.0,best,exploratory
+abrupt,utility,recent_long,3,7.0,best,exploratory
+abrupt,utility,tfidf,3,6.0,best,exploratory
+abrupt,utility,resolved_tfidf,3,3.0,best,exploratory
+abrupt,utility,TS,3,4.0,best,exploratory
+abrupt,utility,LaplaceCTS,3,2.0,best,exploratory
+abrupt,utility,RuleRouter,3,1.0,best,exploratory

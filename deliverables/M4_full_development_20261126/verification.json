@@ -1,0 +1,618 @@
+{
+  "schema_version": "m4-full-development-evidence-v1",
+  "date": "2026-11-26",
+  "execution_commit": "afc8015d6f27ee85866b96c1fe1d28d4c3a160a4",
+  "execution_workspace": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126",
+  "status": "computed_pending_review",
+  "formal_generated": false,
+  "protected_material": {
+    "publication": {
+      "unchanged_files": 51,
+      "registry_empty": true,
+      "approvals_absent": true
+    },
+    "original_workspace": {
+      "unchanged_files": 49,
+      "registry_empty": true,
+      "approvals_absent": true
+    }
+  },
+  "independent_unit": "dialogue",
+  "dialogue_seeds": {
+    "stable": [
+      130000,
+      130001,
+      130002
+    ],
+    "abrupt": [
+      130100,
+      130101,
+      130102
+    ]
+  },
+  "n_per_scenario": 3,
+  "questions_per_dialogue": 300,
+  "configuration_evaluations_including_reused_E1": 33,
+  "new_configuration_evaluations": 32,
+  "distinct_configuration_settings": 26,
+  "analysis_only_runs": 2,
+  "outcome_rows_including_reused_E1": 237600,
+  "replay_rows_including_reused_E1": 869400,
+  "new_replay_rows": 844200,
+  "all_run_file_hashes_verified": true,
+  "all_execution_snapshots_match_published_code": true,
+  "all_dialogue_metrics_recomputed": true,
+  "all_variant_effect_means_recomputed": true,
+  "environment_note": "E7 regenerates ten settings using the same six development seed IDs; these are matched environment draws, not 60 independent formal dialogues or necessarily identical histories.",
+  "inference": "Previously viewed exploratory development data; per-scenario n=3. Replays, algorithm seeds and bootstrap draws do not enlarge the number of independent dialogues.",
+  "runs": [
+    {
+      "stage": "E0",
+      "run_id": "m4_full_e0_development_20261126",
+      "path": "outputs/development/m4_full_e0_development_20261126",
+      "manifest_sha256": "4a71286479a145bb97df8fef421df7445fa484653135c0dde336345a4e930dcd",
+      "files_verified": 35,
+      "status": "computed_pending_review",
+      "operation": "run",
+      "reused_existing": false,
+      "fixture": false,
+      "formal_generated": false,
+      "source": {
+        "kind": "verified_development_archive",
+        "path": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126\\outputs\\development\\m4_default_benchmark_20261123",
+        "manifest_sha256": "30b32b1b9eae03d746b64ce5c516b1153c0fd362444a3d9c591cd79d26938588",
+        "already_viewed": true,
+        "outcomes_sha256": "679c5dfd5d482d427a6aefc2cb9bfda41c01750f65a5952dcc1d304d4ac12344"
+      },
+      "variants": [
+        {
+          "variant": "default",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        }
+      ]
+    },
+    {
+      "stage": "E1",
+      "run_id": "pr_stage_e1_development_20261126",
+      "path": "outputs/development/pr_stage_e1_development_20261126",
+      "manifest_sha256": "1d2864d0585382fd7e51209b6bdd8fa27cc632f7d8524453668c13c35a0953d4",
+      "files_verified": 34,
+      "status": "computed_pending_review",
+      "operation": "run",
+      "reused_existing": true,
+      "fixture": false,
+      "formal_generated": false,
+      "source": {
+        "kind": "verified_development_archive",
+        "path": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126\\outputs\\development\\m4_default_benchmark_20261123",
+        "manifest_sha256": "30b32b1b9eae03d746b64ce5c516b1153c0fd362444a3d9c591cd79d26938588",
+        "already_viewed": true,
+        "outcomes_sha256": "679c5dfd5d482d427a6aefc2cb9bfda41c01750f65a5952dcc1d304d4ac12344"
+      },
+      "variants": [
+        {
+          "variant": "default",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        }
+      ]
+    },
+    {
+      "stage": "E2",
+      "run_id": "m4_full_e2_development_20261126",
+      "path": "outputs/development/m4_full_e2_development_20261126",
+      "manifest_sha256": "53fb7ddef426d4765adb0b97fb32d04d25e4b4c8797c84bb313db9ba2ca8edbc",
+      "files_verified": 98,
+      "status": "computed_pending_review",
+      "operation": "run",
+      "reused_existing": false,
+      "fixture": false,
+      "formal_generated": false,
+      "source": {
+        "kind": "verified_development_archive",
+        "path": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126\\outputs\\development\\m4_default_benchmark_20261123",
+        "manifest_sha256": "30b32b1b9eae03d746b64ce5c516b1153c0fd362444a3d9c591cd79d26938588",
+        "already_viewed": true,
+        "outcomes_sha256": "679c5dfd5d482d427a6aefc2cb9bfda41c01750f65a5952dcc1d304d4ac12344"
+      },
+      "variants": [
+        {
+          "variant": "default",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "constant_features",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        }
+      ]
+    },
+    {
+      "stage": "E3",
+      "run_id": "m4_full_e3_development_20261126",
+      "path": "outputs/development/m4_full_e3_development_20261126",
+      "manifest_sha256": "0ef95c7e1b587363748a48f6c6d086192594966a66d223bbb3c28fa22fd8c4ca",
+      "files_verified": 40,
+      "status": "computed_pending_review",
+      "operation": "analysis_only",
+      "reused_existing": false,
+      "fixture": false,
+      "formal_generated": false,
+      "source": {
+        "path": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126\\outputs\\development\\pr_stage_e1_development_20261126",
+        "manifest_sha256": "1d2864d0585382fd7e51209b6bdd8fa27cc632f7d8524453668c13c35a0953d4"
+      },
+      "variants": []
+    },
+    {
+      "stage": "E4",
+      "run_id": "m4_full_e4_development_20261126",
+      "path": "outputs/development/m4_full_e4_development_20261126",
+      "manifest_sha256": "3a4898429275e16e9c8f3f321f2493a873d5e03ca76c380bc83f90937bc10f78",
+      "files_verified": 137,
+      "status": "computed_pending_review",
+      "operation": "run",
+      "reused_existing": false,
+      "fixture": false,
+      "formal_generated": false,
+      "source": {
+        "kind": "verified_development_archive",
+        "path": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126\\outputs\\development\\m4_default_benchmark_20261123",
+        "manifest_sha256": "30b32b1b9eae03d746b64ce5c516b1153c0fd362444a3d9c591cd79d26938588",
+        "already_viewed": true,
+        "outcomes_sha256": "679c5dfd5d482d427a6aefc2cb9bfda41c01750f65a5952dcc1d304d4ac12344"
+      },
+      "variants": [
+        {
+          "variant": "default",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "lambda_025",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "lambda_100",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        }
+      ]
+    },
+    {
+      "stage": "E5",
+      "run_id": "m4_full_e5_development_20261126",
+      "path": "outputs/development/m4_full_e5_development_20261126",
+      "manifest_sha256": "7a546d0032137f6cf5b8f0d8ff6d2d1fcf51c5a50053a0ad15ac51697063cccf",
+      "files_verified": 381,
+      "status": "computed_pending_review",
+      "operation": "run",
+      "reused_existing": false,
+      "fixture": false,
+      "formal_generated": false,
+      "source": {
+        "kind": "verified_development_archive",
+        "path": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126\\outputs\\development\\m4_default_benchmark_20261123",
+        "manifest_sha256": "30b32b1b9eae03d746b64ce5c516b1153c0fd362444a3d9c591cd79d26938588",
+        "already_viewed": true,
+        "outcomes_sha256": "679c5dfd5d482d427a6aefc2cb9bfda41c01750f65a5952dcc1d304d4ac12344"
+      },
+      "variants": [
+        {
+          "variant": "default",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "resolved_k9",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "resolved_k12",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "without_resolve_pronouns",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "without_normalize_aliases",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "without_preserve_focus",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "algorithm_seeds_5",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 63000,
+          "algorithm_seeds": [
+            17,
+            37,
+            53,
+            71,
+            89
+          ],
+          "status": "computed_pending_review"
+        }
+      ]
+    },
+    {
+      "stage": "E5d",
+      "run_id": "m4_full_e5d_development_20261126",
+      "path": "outputs/development/m4_full_e5d_development_20261126",
+      "manifest_sha256": "3a6753d2d5784e5c6253974b0aee44af504aabc9cb5369dbef8265f304677951",
+      "files_verified": 177,
+      "status": "computed_pending_review",
+      "operation": "run",
+      "reused_existing": false,
+      "fixture": false,
+      "formal_generated": false,
+      "source": {
+        "kind": "verified_development_archive",
+        "path": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126\\outputs\\development\\m4_default_benchmark_20261123",
+        "manifest_sha256": "30b32b1b9eae03d746b64ce5c516b1153c0fd362444a3d9c591cd79d26938588",
+        "already_viewed": true,
+        "outcomes_sha256": "679c5dfd5d482d427a6aefc2cb9bfda41c01750f65a5952dcc1d304d4ac12344"
+      },
+      "variants": [
+        {
+          "variant": "default",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "resolved_budget_128",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "resolved_budget_512",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        }
+      ]
+    },
+    {
+      "stage": "E6",
+      "run_id": "m4_full_e6_development_20261126",
+      "path": "outputs/development/m4_full_e6_development_20261126",
+      "manifest_sha256": "b3fbba4f51ac4b3469f13c8345d57f6c572340b75999759e5e9573e8d3a9f1b7",
+      "files_verified": 212,
+      "status": "computed_pending_review",
+      "operation": "run",
+      "reused_existing": false,
+      "fixture": false,
+      "formal_generated": false,
+      "source": {
+        "kind": "verified_development_archive",
+        "path": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126\\outputs\\development\\m4_default_benchmark_20261123",
+        "manifest_sha256": "30b32b1b9eae03d746b64ce5c516b1153c0fd362444a3d9c591cd79d26938588",
+        "already_viewed": true,
+        "outcomes_sha256": "679c5dfd5d482d427a6aefc2cb9bfda41c01750f65a5952dcc1d304d4ac12344"
+      },
+      "variants": [
+        {
+          "variant": "default",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "prior_01",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "prior_10",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "refit_1",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "refit_10",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        }
+      ]
+    },
+    {
+      "stage": "E7",
+      "run_id": "m4_full_e7_development_20261126",
+      "path": "outputs/development/m4_full_e7_development_20261126",
+      "manifest_sha256": "e0a42fd9b0bce1aba2ec6541e86a289362156848693a67fa63f34645c42137c2",
+      "files_verified": 186,
+      "status": "computed_pending_review",
+      "operation": "run",
+      "reused_existing": false,
+      "fixture": false,
+      "formal_generated": false,
+      "source": {
+        "kind": "verified_development_archive",
+        "path": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126\\outputs\\development\\m4_default_benchmark_20261123",
+        "manifest_sha256": "30b32b1b9eae03d746b64ce5c516b1153c0fd362444a3d9c591cd79d26938588",
+        "already_viewed": true,
+        "outcomes_sha256": "679c5dfd5d482d427a6aefc2cb9bfda41c01750f65a5952dcc1d304d4ac12344"
+      },
+      "variants": [
+        {
+          "variant": "default",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "p_recent_abrupt_after_0p9",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "p_recent_abrupt_after_0p5",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "update_probability_0p1",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "update_probability_0p5",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "initial_conflict_fraction_0p0",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "initial_conflict_fraction_0p5",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "alias_probability_0p0",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "alias_probability_1p0",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "n_projects_3",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        },
+        {
+          "variant": "n_projects_12",
+          "dialogues": 6,
+          "outcomes": 7200,
+          "replay": 25200,
+          "algorithm_seeds": [
+            17,
+            37
+          ],
+          "status": "computed_pending_review"
+        }
+      ]
+    },
+    {
+      "stage": "A",
+      "run_id": "m4_full_a_development_20261126",
+      "path": "outputs/development/m4_full_a_development_20261126",
+      "manifest_sha256": "0a0f1f7cc15761f2e645ff2df63e3add87b7c3d29d64ffed37eac15a5924b2aa",
+      "files_verified": 29,
+      "status": "computed_pending_review",
+      "operation": "analysis_only",
+      "reused_existing": false,
+      "fixture": false,
+      "formal_generated": false,
+      "source": {
+        "path": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_stages_20261126\\outputs\\development\\pr_stage_e1_development_20261126",
+        "manifest_sha256": "1d2864d0585382fd7e51209b6bdd8fa27cc632f7d8524453668c13c35a0953d4"
+      },
+      "variants": []
+    }
+  ]
+}

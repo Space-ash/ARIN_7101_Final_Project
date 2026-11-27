@@ -1,0 +1,111 @@
+{
+  "schema_version": "m4-stage-plan-v1",
+  "stage": "E4",
+  "profile": "development",
+  "formal": false,
+  "fixture": false,
+  "config": {
+    "T": 300,
+    "n_dev_per_scenario": 3,
+    "n_demo_per_scenario": 6,
+    "n_formal_per_scenario": 30,
+    "dev_seed": 130000,
+    "demo_seed": 730000,
+    "formal_seed": null,
+    "algorithm_seeds": [
+      17,
+      37
+    ],
+    "p_recent_stable": 0.9,
+    "p_recent_abrupt_before": 0.9,
+    "p_recent_abrupt_after": 0.1,
+    "update_probability": 0.25,
+    "initial_conflict_fraction": 0.25,
+    "budgets": {
+      "recent_short": 128,
+      "recent_long": 512,
+      "tfidf": 256,
+      "resolved_tfidf": 256
+    },
+    "lambda": 0.5,
+    "cost_reference": 512,
+    "refit_every": 5,
+    "prior_precision": 1.0,
+    "bootstrap_seed": 2026,
+    "n_bootstrap": 2000
+  },
+  "source_run": "outputs/development/m4_default_benchmark_20261123",
+  "dialogue_seeds": {
+    "stable": [
+      130000,
+      130001,
+      130002
+    ],
+    "abrupt": [
+      130100,
+      130101,
+      130102
+    ]
+  },
+  "variants": [
+    {
+      "id": "default",
+      "config": {},
+      "adapter": {},
+      "rebuild": "none"
+    },
+    {
+      "id": "lambda_025",
+      "config": {
+        "lambda": 0.25
+      },
+      "adapter": {},
+      "rebuild": "none"
+    },
+    {
+      "id": "lambda_100",
+      "config": {
+        "lambda": 1.0
+      },
+      "adapter": {},
+      "rebuild": "none"
+    }
+  ],
+  "window_size": 25,
+  "statistics": {
+    "analyses": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A6"
+    ],
+    "metrics": [
+      "utility"
+    ],
+    "bootstrap_resamples": [
+      2000,
+      10000
+    ],
+    "bootstrap_methods": [
+      "percentile",
+      "BCa"
+    ],
+    "confidence": 0.95,
+    "tie_tolerance": 1e-12,
+    "sign_flip_resamples": 10000,
+    "seed": 2026,
+    "rope": {
+      "mu_prior_sd": 0.1,
+      "sigma_prior_shape": 2.0,
+      "sigma_prior_scale": 0.01,
+      "delta": 0.02
+    }
+  },
+  "baseline_rule": "default_development_selected_fixed_arm_retained_for_all_variants",
+  "inference": "exploratory; dialogues paired within scenario; algorithm seeds averaged within dialogue",
+  "environment_pairing": "preassigned common dialogue seeds; histories may differ across environment variants",
+  "rope_status": "explicit exploratory candidate prior, not a team-approved formal analysis",
+  "source_expectation": "full hash-verified development archive; no formal or demo tuning input"
+}

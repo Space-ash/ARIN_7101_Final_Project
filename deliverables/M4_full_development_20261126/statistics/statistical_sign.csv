@@ -1,0 +1,9 @@
+scenario,comparison,method,reference,metric,n,effect,independent_unit,analysis_role,family_adjusted,wins,losses,ties,non_ties,conditional_win_rate,p_value,tie_tolerance,status,hypothesis
+stable,cts_vs_fixed,LaplaceCTS,recent_short,utility,3,0.050313585069444465,dialogue,exploratory,False,3,0,0,3,1.0,0.25,1e-12,ok,P(win | non-tie)=0.5 for independent dialogues
+stable,cts_vs_ts,LaplaceCTS,TS,utility,3,0.06514973958333337,dialogue,exploratory,False,3,0,0,3,1.0,0.25,1e-12,ok,P(win | non-tie)=0.5 for independent dialogues
+stable,cts_vs_router,LaplaceCTS,RuleRouter,utility,3,-0.03180121527777772,dialogue,exploratory,False,0,3,0,3,0.0,0.25,1e-12,ok,P(win | non-tie)=0.5 for independent dialogues
+stable,ts_vs_fixed,TS,recent_short,utility,3,-0.014836154513888903,dialogue,exploratory,False,0,3,0,3,0.0,0.25,1e-12,ok,P(win | non-tie)=0.5 for independent dialogues
+abrupt,cts_vs_fixed,LaplaceCTS,resolved_tfidf,utility,3,0.05337293836805557,dialogue,exploratory,False,3,0,0,3,1.0,0.25,1e-12,ok,P(win | non-tie)=0.5 for independent dialogues
+abrupt,cts_vs_ts,LaplaceCTS,TS,utility,3,0.16064453125000003,dialogue,exploratory,False,3,0,0,3,1.0,0.25,1e-12,ok,P(win | non-tie)=0.5 for independent dialogues
+abrupt,cts_vs_router,LaplaceCTS,RuleRouter,utility,3,-0.03432128906249998,dialogue,exploratory,False,0,3,0,3,0.0,0.25,1e-12,ok,P(win | non-tie)=0.5 for independent dialogues
+abrupt,ts_vs_fixed,TS,resolved_tfidf,utility,3,-0.10727159288194447,dialogue,exploratory,False,0,3,0,3,0.0,0.25,1e-12,ok,P(win | non-tie)=0.5 for independent dialogues
