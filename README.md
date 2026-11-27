@@ -3,7 +3,7 @@
 
 目标：受控合成长对话中的贝叶斯上下文选择，研究正确性与输入成本取舍。无需真实LLM、外部数据或API密钥。
 
-当前进度见 [2026-11-26 项目进度报告](project_progress_11.26.md)：M1–M3 核心实现和开发验证已完成；M4 已完成各阶段完整开发计算、E1 demo分析及60条正式实验准备，尚待人工确认、冻结和正式运行；M5 接口及最终汇报待交付。[成员进度表](team_workspace/team_progress.csv) · [正式实验人工确认清单](deliverables/m4_formal_preparation_20261126/HUMAN_CONFIRMATION.md)
+当前进度见 [2026-11-27 项目进度报告](project_progress_11.27.md)：M1–M3 核心实现和开发验证已完成；M4 已完成各阶段完整开发计算、E1 demo分析及60条正式实验准备，尚待人工确认、冻结和正式运行；M5 接口及最终汇报待交付。[成员进度表](team_workspace/team_progress.csv) · [正式实验人工确认清单](deliverables/m4_formal_preparation_20261126/HUMAN_CONFIRMATION.md)
 
 ## 从哪里开始
 1. 读notebook共同范围与本人的M1–M5任务区间，在team_workspace/team_progress.csv认领。
@@ -56,7 +56,7 @@ PowerShell激活：.\.venv\Scripts\Activate.ps1；macOS/Linux：source .venv/bin
 
 成员分支只改本人cell/说明；公共接口变化写team_workspace/interface_decisions.md并通知下游，M4顺序合并。Git提交源码和人工证据；完整run另行共享，登记commit/地址/校验和。
 
-[变更说明](docs/RELEASE_NOTES.md) · [历史脚手架验证范围](docs/VALIDATION.md) · [当前进度与验证证据](project_progress_11.26.md)。成员最终验收、正式结果和最终汇报仍待小组完成。
+[变更说明](docs/RELEASE_NOTES.md) · [历史脚手架验证范围](docs/VALIDATION.md) · [当前进度与验证证据](project_progress_11.27.md)。成员最终验收、正式结果和最终汇报仍待小组完成。
 
 ## M1–M3 接入自检（试用）
 

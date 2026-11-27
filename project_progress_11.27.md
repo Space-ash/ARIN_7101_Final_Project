@@ -1,95 +1,27 @@
-# 项目进度报告｜2026 年 11 月 26 日
+# 项目进度报告｜2026 年 11 月 27 日
 
-**当前处于正式实验冻结前：M1–M3 核心实现和开发验证已完成，M4 的 E0–E7（含预算）与A类完整开发计算、E1 demo分析及60条正式准备包已完成；人工确认尚未齐备，正式方案未冻结，60 条正式对话尚未生成或运行。M5 的读取校验、制图与最终汇报仍待交付，可使用现有 demo 并行推进。**
+**M4 已交付 E0–E7 全阶段开发结果、A1–A7 补充分析、12 条 demo 的 E1 分析和 60 条正式对话的未签署准备包。** 正式运行登记仍为空。冻结前还需 M1/M2 逐题定案、M3 确认统计方案，以及五名成员披露已用对话种子并批准同一版本。M5 可以同时开始读档、校验和制图。[准备包状态](deliverables/m4_formal_preparation_20261126/readiness.json) · [正式登记](team_workspace/formal_runs.json)
 
-本报告包含本轮完整开发计算及此前工作区、远端记录，不代表成员签收或批准。状态依据代码、可回读产物和审查记录；未共享的个人材料不计为已验收交付。
+## 相比 11 月 26 日的变化
 
-## 1. 本地与远端范围
+上一版主线报告验证到小规模 demo。本轮从 `0472e32` 起按依赖顺序审查并合并三项交付，实验代码与结果对应的执行版本为 `afc8015`。[11 月 26 日主线报告](https://github.com/Space-ash/ARIN_7101_Final_Project/blob/0472e32/project_progress_11.26.md)
 
-- 工作区整理起点为 `m4-integration-stage2` 的 `ca90813f3ccae4509591d9af8446afd5da70e2a4`；前期准备包发布分支为 `codex/m4-e1-formal-preparation`。本次结果发布分支为 `codex/m4-full-development-results`，基于PR #8的`afc8015`，继承上游导出完整性校验。
-- 远端仓库为 [Space-ash/ARIN_7101_Final_Project](https://github.com/Space-ash/ARIN_7101_Final_Project)，此前核对的 `main` 为 [`0472e3220ea6215e89e72521b295297326dcd945`](https://github.com/Space-ash/ARIN_7101_Final_Project/commit/0472e3220ea6215e89e72521b295297326dcd945)。远端已包含此前 M4 集成与 M1 审查更新。
-- 前期材料已通过[PR #7](https://github.com/Space-ash/ARIN_7101_Final_Project/pull/7)提交；分阶段代码与验证已通过[PR #8](https://github.com/Space-ash/ARIN_7101_Final_Project/pull/8)提交。本轮完整开发计算使用PR #8的`afc8015`版本，本次后续fork PR交付完整开发结果底表、更新文档与验证记录，依赖PR #8。原始outputs和约15MB的ZIP保留本地另行共享，其校验和随证据提交；未合并任何PR。
-- 本轮运行前后本地 `formal_runs.json` 均为 `[]`；远端状态见此前回读记录。本地有完整 E1 demo 归档，不能继续沿用旧报告“没有完整 demo”的判断。[正式登记](team_workspace/formal_runs.json) · [远端回读记录](deliverables/m4_formal_preparation_20261126/remote_readback.json)
-- [11 月 23 日报告](project_progress_11.23.md)保留为历史快照；其中 M3 待实现、M4 三个入口未完成、M1 审查意见空白等描述已被后续工作更新。当前进度以本报告及所链接的最新证据为准。
-
-## 2. M1–M5 当前进度
-
-| 成员 | 状态 | 已完成且有证据 | 当前剩余工作 |
-|---|---|---|---|
-| M1 · Liu Zhuoyang | `review` | 生成器、公开前缀、独立真值核查；6 条开发对话共 1,800 题已重核；十题已有 M1 审查意见 | 本人确认记录，与 M2 完成十题联合判定；完成数据来源、接口和最终版本的接收确认 |
-| M2 · He Junchen | `review` | 四策略、回答器、成本和评分；7,200 行开发全臂表、40 条抽查臂记录；检索候选 8/9/12 开发比较及保留 8 的决定 | 与 M1 完成联合判定，确认开发来源及配置，完成 M3/M4 接收确认 |
-| M3 | `review` | TS、LaplaceCTS、RuleRouter 和七方法回放已接入；数值、反馈隔离、重置等检查已有证据 | 复核 M4 统计口径及待冻结方案；正式运行后复核正式效应表 |
-| M4 | `doing` | 集成、统计、冻结/运行入口和归档流程；全阶段完整开发计算与E1 demo 12条分析；60条候选种子、来源核验、分析规格和待确认冻结包 | 审阅全阶段开发结果，补齐人工材料并交M3/M5复核；按用户要求暂不正式运行 |
-| M5 | `todo` | 已定义职责和接口；有完整 demo 可用于开发 | 实现读取校验、制图与导出；独立核验归档、逐图对账与解释；完成全组 slides、视频和提交材料 |
-
-状态表已同步到 [team_progress.csv](team_workspace/team_progress.csv)。`review` 表示已有实现与验证、仍待本人或接收人确认；没有将任何成员整项职责标记为 `done`。
-
-M1/M2 最新联合审查材料以准备包的 [audit_review.csv](deliverables/m4_formal_preparation_20261126/audit_review.csv) 为准：双方姓名和意见已有记录，**十行联合判定仍全部为 `pending`**。本地旧交接目录中的审查表尚未同步为这个版本，不能混用。相关说明见 [M1 review](deliverables/m4_formal_preparation_20261126/M1_review.md)、[M2 notes](deliverables/M2_notes.md)、[M3 notes](deliverables/M3_notes.md) 和 [M4 notes](deliverables/M4_notes.md)。
-
-M5 三个函数 `load_verified_run`、`build_figures`、`export_visual_evidence` 仍抛出 `NotImplementedError`，[M5 notes](deliverables/M5_notes.md) 各栏目待填写，[提交清单](deliverables/SUBMISSION_CHECKLIST.md)尚未完成。仓库未见可验收的全组最终图表、slides 或视频交付；`M3_presentation.ipynb` 是 M3 方法展示材料，不代表全组最终汇报已经完成。
-
-## 3. 已经运行了多少数据
-
-| 阶段 | 独立对话数 | 问题数 | 四臂结果行数 | 七方法 × 两算法种子回放行数 | 对话级指标行数 | 状态 |
-|---|---:|---:|---:|---:|---:|---|
-| E1 development | 6（每场景 3） | 1,800 | 7,200 | 25,200 | 42 | 已有数据重放核验与补充分析完成，待研究复核 |
-| E1 demo | 12（每场景 6） | 3,600 | 14,400 | 50,400 | 84 | 已有数据重放核验与补充分析完成，待研究复核 |
-| E1 formal | 计划 60（每场景 30） | 计划 18,000 | 计划 72,000 | 计划 252,000 | 计划 420 | **实际未生成、未运行** |
-
-开发与 demo 都是已看数据，本次利用原始全臂表并核验来源、重放和分析，不构成新的独立正式测试。300 个问题、两个算法种子和重复执行均不会增加独立对话样本数；开发与 demo 分开报告。
-
-紧凑结果与来源见 [development E1](deliverables/M4_E1_m4_e1_development_20261126.json)、[demo E1](deliverables/M4_E1_m4_e1_demo_20261126.json)。完整轨迹在本地 `outputs/development/m4_e1_development_20261126` 与 `outputs/demo/m4_e1_demo_20261126`，`outputs/` 被 Git 忽略，共享时需另交归档并核对哈希。
-
-已有 demo 中，CTS 相对开发固定臂的平均效用差为 stable **+0.049741**、abrupt **+0.062056**；相对 TS 为 **+0.081780 / +0.134228**，相对 RuleRouter 为 **−0.030802 / −0.027951**。这表明当前探索结果并非 CTS 全面领先；它们不能替代正式结果或证明一般场景中的优势。完整区间、五项指标与效用分解保留在上述结果文件中。
-
-## 4. M4 实验矩阵
-
-| 实验 | 当前进度 | 下一步 |
+| 合并项 | 新增交付 | 本轮复核 |
 |---|---|---|
-| E1：七方法总体比较与效用分解 | 完整开发结果核验复用，demo已完成，正式入口已实现 | 暂不启动正式；先审阅开发结果并补齐人工材料 |
-| E2：同模型特征消融 | 完整开发2配置完成，完整特征优于常量特征的均值差+0.055482/+0.192159 | 审阅小样本解释，不自动改变正式方案 |
-| E3：阶段、题型与时间变化 | 完整开发及demo只读分析已完成；abrupt后半段优势变化依参照而异 | 审阅阶段与题型解释 |
-| E4：成本权重敏感性 | 完整λ=0.25/0.5/1.0重放与固定动作换评分完成 | 在各λ内部解释方法差，不跨标尺择优 |
-| E5：检索组件及随机性 | 完整候选/组件/5seed共7配置，预算另3配置完成 | 审阅单臂、CTS总体及别名子组的不同方向 |
+| [#7 · E1 与正式准备](https://github.com/Space-ash/ARIN_7101_Final_Project/pull/7) | E1 增加 CTS 与 TS、RuleRouter 的对话级配对比较和效用分解。正式准备包绑定配置、候选种子、源码和开发证据。 | 准备包清单的 44 个文件逐一通过 SHA-256 核验；合并版本的技术预检通过，状态仍为待人工确认。 |
+| [#8 · 分阶段实验代码](https://github.com/Space-ash/ARIN_7101_Final_Project/pull/8) | 可按版本化计划执行 E0–E7，并分析时间变化、参数敏感性和不同方法的表现。 | 本机实际运行的 96 项 M4 测试通过。另有一个依赖完整 demo 归档的测试类被跳过，含 5 项用例。主本 49 个单元的结构检查和 M1–M3 接口检查通过。 |
+| [#9 · 完整开发结果](https://github.com/Space-ash/ARIN_7101_Final_Project/pull/9) | 发布结果表、运行计划及来源记录。33 次配置评估涵盖 26 种不同设置，其中 32 次新执行、1 次复用。 | 46 个开发证据文件、证据清单及结果文档哈希匹配。用 E1 七方法的平均效用独立复算两个场景各三项比较，均与发布表一致。 |
 
-E0完整正确性核验、E6先验/拟合频率5配置、E7环境11配置和A1–A7开发分析均已完成。全量表、区间、运行ID及核验见[完整开发结果](docs/EXPERIMENT_RESULTS_DEVELOPMENT_20261126.md)。本轮新增32个配置执行，复用1个完整E1，另做2项只读分析；每场景仍只有3条开发对话。正式实验仍未生成。
+**开发结果的解释范围。** 每个场景使用 3 条已见开发对话，每条 300 题。默认 E1 中，stable 和 abrupt 的 CTS 平均效用分别高于各自开发固定臂 0.050314、0.053373，高于 TS 0.065150、0.160645，低于 RuleRouter 0.031801、0.034321。扩大参数网格和重复算法种子会增加轨迹行数，独立样本数仍是每场景 3 条。这些比较供方法解释与冻结前复核使用。[开发结果报告](docs/EXPERIMENT_RESULTS_DEVELOPMENT_20261126.md) · [结果底表](deliverables/M4_full_development_20261126)
 
-完整方案见 [M4 正式工作流](docs/M4_FORMAL_WORKFLOW.md)。**本次 60 条正式准备包仅覆盖 E1，E2–E7完整开发已执行，但未纳入本次正式批准。** E3 可在同一 E1 轨迹上补做，但不改变已指定的主比较。
+## M1–M5 的进度和下一次交付
 
-[Methods 中文原稿](ARIN7101_Methods_CN.md)已保存到仓库；研究调研与后续建议不代表已完成额外实验。当前实验使用受控合成对话和确定性回答器；尚无真实 LLM、真实 API 费用或时延实验结果。
-
-## 5. 60 条正式实验准备情况
-
-准备包位于 [deliverables/m4_formal_preparation_20261126](deliverables/m4_formal_preparation_20261126/HUMAN_CONFIRMATION.md)，当前状态为 `prepared_pending_human_confirmation`。
-
-已完成：
-
-- 候选种子：stable `930000–930029`，abrupt `930100–930129`，各 30 条、每条 300 题。它们仅被预留，没有调用生成器查看内容。
-- 可见仓库、历史记录及归档种子盘点：154 个保守排除 ID；原工作区清点覆盖 125 个来源，隔离发布工作区重核覆盖 62 个来源，原清点另存保留。与候选没有已知碰撞；成员未共享运行仍需本人披露。
-- [plan.json](deliverables/m4_formal_preparation_20261126/plan.json)绑定配置、开发固定臂、候选种子、已用种子和 E1 分析规格；保留原始开发来源，并以当前代码重核相关证据。
-- 保存工作本、执行器、协议、加载器、分析器五项代码快照，以及审查材料、源码/证据哈希、未签批准模板和操作命令。
-- 发布分支的 47 项 M4 测试全部通过；正式分析入口使用现有 demo 做回归核验。发布包重新绑定 LF 源码，清单覆盖 44 个文件；Git 对证据目录保留原始字节，防止换行转换破坏哈希。干净克隆若缺少完整 demo 归档，相关 5 项回归测试会跳过。
-
-[readiness.json](deliverables/m4_formal_preparation_20261126/readiness.json)明确记录：`technical_checks_passed=true`、`formal_generated=false`、`frozen=false`、`approved_for_execution=false`。机器检查通过不能代替真实人工确认；当前没有 `approvals.json`。
-
-主统计口径为对话级配对，算法种子在对话内平均；两个场景的 CTS−开发固定臂效用差为主比较，2,000 次 bootstrap，报告 95% 和 97.5% 区间。新增直接比较为探索性 95% 区间。效用实际意义阈值草案为 0.02，仍需团队在查看正式结果前确认；每场景 30 条不是已经验证的功效保证。
-
-## 6. 当前阻塞与推进顺序
-
-| 负责人 | 必须补齐的人工材料 | 完成标准 |
+| 成员 | 当前进度 | 下一步与验收人 |
 |---|---|---|
-| M1 / M2 | 十题联合审查 | 本人确认已有意见，逐题解决 `pending`；失败保留原因并修正、复核，不能批量代填 `pass` |
-| M3 | 统计方案复核 | 确认独立单位、聚合、基线选择、主/探索比较、区间、效用分解、0.02 阈值和失败保留规则 |
-| M1–M5 | 全部已用对话种子披露 | 每人确认是否有未共享开发、调参、demo、失败或历史运行；新增种子并入计划，检查候选碰撞 |
-| M1–M5 | 精确版本批准 | 材料修改后刷新哈希；各成员对同一计划、代码和证据填写真实姓名、日期及批准/披露记录 |
+| **M1 · 待复核** | 已交付两场景生成器、真值核查和十题公开前缀追踪。准备包含六条开发对话、1,800 题的真值核查证据。[真值检查](deliverables/m4_formal_preparation_20261126/truth_checks.json) | 本人确认十题的目标、最新证据和旧值，与 M2 逐题写入联合判定；有分歧的题记录原因并复核。向 M4 确认开发数据来源及对应版本。 |
+| **M2 · 待复核** | 六条对话共 7,200 行四臂评价，40 条抽查策略记录已有重建证据。比较过 8、9、12 个检索候选，当前保留 8。准备包与协作表的审查 CSV 哈希一致，十行都有双方意见，判定均为 `pending`。[审查表](deliverables/m4_formal_preparation_20261126/audit_review.csv) · [接口决策](team_workspace/interface_decisions.md) | 与 M1 关闭十题判定，向 M3/M4 确认回放所用全表及策略配置；和 M4 核对最终审查表已绑定到待批准备包。 |
+| **M3 · 待复核** | 七方法回放已接入开发和 demo。准备包已含方法数值与反馈隔离检查，E1 已有按对话配对的差值表。[方法检查](deliverables/m4_formal_preparation_20261126/method_checks.json) · [E1 验证表](deliverables/m4_formal_preparation_20261126/validation_tables) | 复核算法种子先在对话内平均、两场景主比较的 95% 与 97.5% 区间、探索性直接比较及准确率与成本分解，向 M4 提交统计复核意见。正式运行后再核对同一归档的效应表。 |
+| **M4 · 开发结果已交付，正式实验待冻结** | 已交付全部开发结果与 E1 正式准备包。正式方案预留每场景 30 条对话，预计 18,000 题、72,000 行四臂评价和 252,000 行回放。[正式计划](deliverables/m4_formal_preparation_20261126/plan.json) | 向 M3/M5 共享完整原始归档及校验和，收齐十题判定、统计复核与五人种子披露。复查冲突并刷新版本绑定，取得全组批准后冻结、登记、运行，再向 M3/M5 交付同一正式归档。[人工确认清单](deliverables/m4_formal_preparation_20261126/HUMAN_CONFIRMATION.md) |
+| **M5 · 待实现** | 主本的 `load_verified_run`、`build_figures`、`export_visual_evidence` 仍为占位，提交清单中的最终 slides、视频与签收待填。[主工作本](ARIN7101_Context_Bandit_Release_Notebook.ipynb) · [提交清单](deliverables/SUBMISSION_CHECKLIST.md) | 先用小规模 demo 实现独立读取与哈希、表键、样本数校验，再用 M4 共享的完整 demo 对账。每张图附对应数据表和解释；正式包验收后生成最终图表、slides 和视频，交全组复核。 |
 
-具体文件、十题位置、字段和命令见 [人工确认清单](deliverables/m4_formal_preparation_20261126/HUMAN_CONFIRMATION.md)。这些是现有正式协议要求的研究确认，不能由自动化测试或进度表替代。
-
-当前执行安排：
-
-1. 本轮完整开发预设已完成，先审阅[结果文档](docs/EXPERIMENT_RESULTS_DEVELOPMENT_20261126.md)及全部方向的证据；不以显著性筛选。
-2. 用户要求暂不启动60条正式实验。人工材料及M5可并行推进，当前正式准备包、默认配置和登记保持不变。
-3. 若后续明确安排正式执行，再收齐披露、统计及精确版本批准，核验后冻结和登记；参数方案若改变需重做绑定，不能沿用旧批准。
-4. 正式计算及M3/M5正式复核、最终slides与视频均仍未完成。
-
-M5 若修改当前已纳入哈希的主工作本，应在最终批准前重新核验和刷新准备包，或在独立文件中开发后统一集成；任何已绑定代码变更都不能沿用旧批准。
+**归档交接仍待完成。** GitHub 已有可审阅的开发结果表和完整 demo 的 E1 摘要；本机缺少完整 demo 原始目录和全阶段开发 ZIP。此次核验覆盖仓库中的文件，未重跑全部开发实验，也未独立回读原始 ZIP 中的逐题轨迹。接收方可按发布记录中的 SHA-256 核对另行共享的文件。[E1 demo 摘要](deliverables/M4_E1_m4_e1_demo_20261126.json) · [原始开发包记录](deliverables/M4_full_development_20261126/raw_archive.json)
