@@ -268,3 +268,12 @@ python scripts/prepare_m4_formal.py preflight --package deliverables/m4_formal_p
 发布工作区清点有62个来源，原工作区125来源清点保存在 prior_workspace_seed_inventory.json；保守排除154个seed。发布清单现覆盖44个文件（另加清单自身），最新待签计划 SHA256 为 `d98d0d07f6843a754ec92b21c42ac2e869346512f56addb5a4971792376562a9`。原计划哈希只保留作历史记录，不用于本次批准。当前仍无 approvals.json，十题仍pending，formal_runs.json仍为空。
 
 干净克隆可直接preflight核验本包；完整demo回归需要另行共享outputs归档，缺少时相关五项测试跳过。E2–E7执行代码仍暂停且未纳入此PR。
+
+
+## 2026-11-26：分阶段实验代码补齐
+
+新增run_m4_stages.py与版本化开发预设，独立实现E0在线/回放状态对照、E2特征消融、E3时间分析、E4成本权重、E5检索/组件/预算/算法seed、E6先验与拟合间隔、E7环境网格以及A1–A7统计工具。模块不修改主本或原E1正式执行器，仍仅用开发seed或已有归档。
+
+101项测试通过；各阶段短对话检查共35个配置。新默认适配器在完整6条开发对话上逐行复现旧轨迹；E3和数学分析对现有12条demo完成只读验证。短fixture结果不作为研究效果，完整E2/E4–E7开发网格尚未执行。命令与输出见[运行说明](../docs/EXPERIMENT_EXECUTION.md)，实际归档和哈希见[M4阶段代码验证](M4_stage_code_verification_20261126.json)。
+
+本分支继承的PR #7正式准备包44项文件哈希保持一致（旧工作区42项记录单独保留），formal_runs.json仍为空；未生成正式60条、未冻结、未写批准。新阶段代码通过依赖PR #7的独立后续PR交付。

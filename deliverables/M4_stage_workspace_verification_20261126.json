@@ -1,0 +1,195 @@
+{
+  "date": "2026-11-26",
+  "status": "code_ready_exploratory_experiments_pending_review",
+  "formal_generated": false,
+  "formal_registry_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "formal_registry": [],
+  "original_preparation_files_unchanged": 42,
+  "tests": {
+    "command": "python -m unittest discover -s scripts -p 'test_m4*.py'",
+    "passed": 101,
+    "previous_tests": 47,
+    "new_tests": 54,
+    "full_demo_regressions_executed": true
+  },
+  "notebook_structure": "passed; 49 cells; three M5 placeholders remain",
+  "source_sha256": {
+    "scripts/m4_experiment_plan.py": "01119734abe3e5d57d2ce2a369fd15754ae3d537a2a6f0693cd6fa012ed78400",
+    "scripts/run_m4_stages.py": "b5bd1e9224defd67cc8500e485a90494b19d463c2ff70d50ae968c947e225148",
+    "scripts/m4_variants.py": "7b94d98563deb24f43ac446f4ac77ab06e507fff8c8163525e4d635083bfe5a0",
+    "scripts/m4_temporal.py": "c479f53fd21c724d22687abf49a3a73d0af0f3ef8166a9a87e60460b79d6ebed",
+    "scripts/m4_subgroups.py": "442881e7b61e076241e806218a4455345dea2d8824ffbf34bf842c4821612e8a",
+    "scripts/m4_statistics.py": "40f623b986884d3550a230b8c5bd58e5bbb29cd14de9857c7385b282f7607cb7",
+    "scripts/m4_validation.py": "e2b72a69ddcf071459ffde96063d09b0865f3f544d12650262d460981d829872",
+    "scripts/m4_analysis.py": "8641622ccd7c5ac9e6e4d2459f9c57fa314fabf4120ca407a2443714f1ecb83b",
+    "scripts/m4_protocol.py": "4ea194b9c096318d818b8b23ce55ed99b4548fd788920c64996f9392a498610e",
+    "scripts/run_m4_formal.py": "1bfcbab8a9a34441749b73ead7bb2d1b50ad5a52f665bcf3a7ac89952008c053",
+    "scripts/run_m4_experiment1.py": "a104dba0dee4ea31b672cd32544fe84311790e164f94ee3fd526c1c79f76e328",
+    "scripts/test_member_handoff.py": "55be95dfabbb1f9468feca772eb8500dd67143f6c9b566e57c39e354b7d80e9d"
+  },
+  "smoke_configurations": 35,
+  "smoke_results_are_not_independent_research_data": true,
+  "smoke_runs": [
+    {
+      "stage": "A",
+      "run": "outputs/development/m4_stages_a_smoke_20261126_v3",
+      "manifest_sha256": "bdfe97cc7083d0e9d14dc22c365b4ac3ec7d8167fc3ea438156f45336340b7c7",
+      "variants": 1,
+      "dialogues_per_configuration": 4,
+      "questions_per_dialogue": 12,
+      "status": "computed_pending_review",
+      "fixture": true,
+      "all_manifest_hashes_verified": true,
+      "execution_sources_match_current": true
+    },
+    {
+      "stage": "E0",
+      "run": "outputs/development/m4_stages_e0_smoke_20261126_v3",
+      "manifest_sha256": "0ac3969db977b981ae6a65b3196f8365d62a9ad811c283a9214fc2aa3a71cc52",
+      "variants": 1,
+      "dialogues_per_configuration": 4,
+      "questions_per_dialogue": 12,
+      "status": "computed_pending_review",
+      "fixture": true,
+      "all_manifest_hashes_verified": true,
+      "execution_sources_match_current": true
+    },
+    {
+      "stage": "E1",
+      "run": "outputs/development/m4_stages_e1_smoke_20261126_v3",
+      "manifest_sha256": "6e348b76e46c0d14e49b764bab19b806b8dc46e28e8d25b53435fab256774416",
+      "variants": 1,
+      "dialogues_per_configuration": 4,
+      "questions_per_dialogue": 12,
+      "status": "computed_pending_review",
+      "fixture": true,
+      "all_manifest_hashes_verified": true,
+      "execution_sources_match_current": true
+    },
+    {
+      "stage": "E2",
+      "run": "outputs/development/m4_stages_e2_plan_smoke_20261126_v2",
+      "manifest_sha256": "65806428ae49829350be66efedae138141ee15f1e5c9d0b649108840e00ff9c1",
+      "variants": 2,
+      "dialogues_per_configuration": 4,
+      "questions_per_dialogue": 12,
+      "status": "computed_pending_review",
+      "fixture": true,
+      "all_manifest_hashes_verified": true,
+      "execution_sources_match_current": true
+    },
+    {
+      "stage": "E3",
+      "run": "outputs/development/m4_stages_e3_smoke_20261126_v3",
+      "manifest_sha256": "8e85705c4dc3d80e4d398d22e7f857df2383a035d5e97bf870e95e5033d2cbc9",
+      "variants": 1,
+      "dialogues_per_configuration": 4,
+      "questions_per_dialogue": 12,
+      "status": "computed_pending_review",
+      "fixture": true,
+      "all_manifest_hashes_verified": true,
+      "execution_sources_match_current": true
+    },
+    {
+      "stage": "E4",
+      "run": "outputs/development/m4_stages_e4_smoke_20261126_v3",
+      "manifest_sha256": "e8786a0272f533413a3beb3cc28c6278f816a562823263d1bf65cebb12604d97",
+      "variants": 3,
+      "dialogues_per_configuration": 4,
+      "questions_per_dialogue": 12,
+      "status": "computed_pending_review",
+      "fixture": true,
+      "all_manifest_hashes_verified": true,
+      "execution_sources_match_current": true
+    },
+    {
+      "stage": "E5",
+      "run": "outputs/development/m4_stages_e5_smoke_20261126_v2",
+      "manifest_sha256": "5e260e5e13eb09435ded8f75f630551a791ae837dd7ba4f9ad1e477515371386",
+      "variants": 7,
+      "dialogues_per_configuration": 4,
+      "questions_per_dialogue": 12,
+      "status": "computed_pending_review",
+      "fixture": true,
+      "all_manifest_hashes_verified": true,
+      "execution_sources_match_current": true
+    },
+    {
+      "stage": "E5d",
+      "run": "outputs/development/m4_stages_e5d_smoke_20261126_v2",
+      "manifest_sha256": "7672b27c964f67103e6c7b7ec0d0373ccea4b86b3c57a9cabc59d6a8b71d1d7d",
+      "variants": 3,
+      "dialogues_per_configuration": 4,
+      "questions_per_dialogue": 12,
+      "status": "computed_pending_review",
+      "fixture": true,
+      "all_manifest_hashes_verified": true,
+      "execution_sources_match_current": true
+    },
+    {
+      "stage": "E6",
+      "run": "outputs/development/m4_stages_e6_smoke_20261126_v3",
+      "manifest_sha256": "eb010c4efcd9f9aabe11ae35ae0ee9501755767aea98f638985313ebb6853e83",
+      "variants": 5,
+      "dialogues_per_configuration": 4,
+      "questions_per_dialogue": 12,
+      "status": "computed_pending_review",
+      "fixture": true,
+      "all_manifest_hashes_verified": true,
+      "execution_sources_match_current": true
+    },
+    {
+      "stage": "E7",
+      "run": "outputs/development/m4_stages_e7_smoke_20261126_v3",
+      "manifest_sha256": "4c0dc5e21bae4cd73e6c82f5bcf9b580aac0ddcf6983d15660ee2323da413efd",
+      "variants": 11,
+      "dialogues_per_configuration": 4,
+      "questions_per_dialogue": 12,
+      "status": "computed_pending_review",
+      "fixture": true,
+      "all_manifest_hashes_verified": true,
+      "execution_sources_match_current": true
+    }
+  ],
+  "existing_data_checks": [
+    {
+      "run": "outputs/development/m4_stages_e1_development_verification_20261126_v1",
+      "manifest_sha256": "1e4ddc23954ac42e3bfc2915b502b7ada54de1a5c3d343034f0942755fe0cc89",
+      "status": "computed_pending_review",
+      "fixture": false,
+      "operation": "default_development_replay_verification",
+      "note": "Actual executed code snapshots retained in this archive; later orchestration guards covered by final tests and smoke runs."
+    },
+    {
+      "run": "outputs/development/m4_e3_demo_analysis_20261126_v1",
+      "manifest_sha256": "3efc191f9b0b7fd6f5383a856b1604e17fdc70af3ab729dbd82581c02810570f",
+      "status": "computed_pending_review",
+      "fixture": false,
+      "operation": "analysis_only",
+      "note": "Actual executed code snapshots retained in this archive; later orchestration guards covered by final tests and smoke runs."
+    },
+    {
+      "run": "outputs/development/m4_statistics_demo_analysis_20261126_v1",
+      "manifest_sha256": "a95fe3cc0353a9511d38edcbf473fe219a8264b8afb99fdf26f15c56234d5b01",
+      "status": "computed_pending_review",
+      "fixture": false,
+      "operation": "analysis_only",
+      "note": "Actual executed code snapshots retained in this archive; later orchestration guards covered by final tests and smoke runs."
+    },
+    {
+      "run": "outputs/development/m4_e3_constant_analysis_20261126_v1",
+      "manifest_sha256": "fd31fdf4082fcd932f89918b6ee37f560a451e746cb5e73986a7f296aeb414ac",
+      "status": "computed_pending_review",
+      "fixture": true,
+      "operation": "analysis_only",
+      "note": "Actual executed code snapshots retained in this archive; later orchestration guards covered by final tests and smoke runs."
+    }
+  ],
+  "limitations": [
+    "Full E2/E4/E5/E6/E7 development grids have not been run.",
+    "ROPE prior is an explicit exploratory candidate, not an approved formal model.",
+    "E7 matches preassigned seed draws; histories need not be identical.",
+    "No E2-E7 code was added to the existing E1 formal approval scope.",
+    "New stage code remains local and has not been added to PR #7."
+  ]
+}

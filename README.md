@@ -67,3 +67,5 @@ PowerShell激活：.\.venv\Scripts\Activate.ps1；macOS/Linux：source .venv/bin
 见 [调研文档库](docs/research/README.md)，包括 TS/CTS 效果、成本与统计不确定性的数学测评方法。
 
 具体实验测什么、控制什么、如何解释结果，见 [实验设计与数学评估说明](docs/EXPERIMENT_DESIGN.md)。
+
+分阶段代码入口、短对话检查、完整开发实验与已有归档分析命令，见 [实验代码运行说明](docs/EXPERIMENT_EXECUTION.md)。新入口不启动正式实验。

@@ -1,0 +1,16 @@
+{
+  "analyses": ["A1", "A2", "A3", "A4", "A5", "A6"],
+  "metrics": ["utility"],
+  "bootstrap_resamples": [2000, 10000],
+  "bootstrap_methods": ["percentile", "BCa"],
+  "confidence": 0.95,
+  "tie_tolerance": 1e-12,
+  "sign_flip_resamples": 10000,
+  "seed": 2026,
+  "rope": {
+    "mu_prior_sd": 0.1,
+    "sigma_prior_shape": 2.0,
+    "sigma_prior_scale": 0.01,
+    "delta": 0.02
+  }
+}
