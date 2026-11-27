@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "command": "python -m unittest discover -s scripts -p 'test_m4*.py'",
+  "test_count": 47,
+  "suites": {
+    "test_m4_protocol.py": 13,
+    "test_m4_formal_analysis.py": 5,
+    "test_m4_seed_inventory.py": 6,
+    "test_m4_analysis.py": 17,
+    "test_m4_formal_preparation.py": 6
+  },
+  "temporary_directory": "outputs/test_tmp",
+  "initial_environment_failure": null,
+  "notebook_structure_check": "passed; 49 cells; clean outputs; M5 still has three unrelated placeholder interfaces",
+  "formal_generated": false,
+  "real_approvals_modified": false,
+  "note": "Approval lifecycle tests use explicitly synthetic attestations in isolated temporary directories. No real formal registry was written by those tests.",
+  "verified_scope": "Re-run all 47 tests on the PR worktree based on origin/main 0472e322, retaining upstream export grid validation; complete demo fixtures were locally available.",
+  "clean_clone_limit": "The five full-demo regression tests skip when the separately shared outputs/demo/m4_stage2_verified_20261123 archive is unavailable."
+}

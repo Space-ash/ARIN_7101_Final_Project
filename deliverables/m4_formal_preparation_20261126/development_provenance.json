@@ -1,0 +1,39 @@
+{
+  "config_sha256": "ce9c4d07dc89193fee4d9fcb5b9cb47304fd546f9261e07bded80f7fda0b3e7d",
+  "notebook_sha256": "16cf1b9fe0fd25498253b9199c9c40f7b7f9254526a570de031babe897ccffbd",
+  "development_sha256": "1eb32298b82ee9cdc7ddf2940d2d778b1bd43b256c8b6ddbeb375e0d5b211813",
+  "mode": "revalidated_existing_development",
+  "original_manifest_sha256": "12cd7c60052921483923fad43461eab178dc1bb64550df7141b3a019f4c14098",
+  "original_notebook_sha256": "b0a01a5f6416e16e97d6bef0edf2bde086dc2f6508b74898006c4ae21ebea712",
+  "original_config_sha256": "754d6b3cf5d125e3a3b0e940baa30d213bff212ee4c2614a497f83310081687f",
+  "compatible_code_cells": [
+    "m1-checks-workspace",
+    "m1-generation-skeleton",
+    "m2-budget-packing",
+    "m2-checks-workspace",
+    "m2-context-walkthrough",
+    "m2-cost-breakdown",
+    "m2-development-run",
+    "m2-episode-evaluation",
+    "m2-evaluation-walkthrough",
+    "m2-evidence-export-pending",
+    "m2-four-strategies",
+    "m2-isolation-and-version-checks",
+    "m2-reader-walkthrough",
+    "m2-short-history-fixture",
+    "m2-strategies-skeleton",
+    "m2-template-parser",
+    "m2-tfidf-ranking",
+    "m3-checks-workspace",
+    "m3-selector-skeleton",
+    "shared-protocol-draft"
+  ],
+  "metadata_only_config_change": {
+    "formal_seed": {
+      "before": null,
+      "after": 930000
+    }
+  },
+  "reused": "Full four-arm outcomes and construction_ms; no full TF-IDF recomputation",
+  "rerun": "Six existing development truth audits, M2 fixtures/full-table validation/40-arm reconstruction, M3 checks"
+}

@@ -1,0 +1,37 @@
+{
+  "config_sha256": "754d6b3cf5d125e3a3b0e940baa30d213bff212ee4c2614a497f83310081687f",
+  "notebook_sha256": "b0a01a5f6416e16e97d6bef0edf2bde086dc2f6508b74898006c4ae21ebea712",
+  "development_sha256": "1eb32298b82ee9cdc7ddf2940d2d778b1bd43b256c8b6ddbeb375e0d5b211813",
+  "status": "passed",
+  "payload": {
+    "beta_posterior": [
+      3,
+      2
+    ],
+    "map_gradient_norm": 7.373207354988772e-07,
+    "gradient_fd_max_error": 5.038980344096444e-11,
+    "hessian_fd_max_error": 1.8912649224489542e-11,
+    "covariance_min_eigenvalue": 0.38381511226206355,
+    "refit_every_selected_feedbacks": 5,
+    "reset_and_unchosen_reward_flip": "passed",
+    "methods": [
+      "recent_short",
+      "recent_long",
+      "tfidf",
+      "resolved_tfidf",
+      "TS",
+      "LaplaceCTS",
+      "RuleRouter"
+    ],
+    "algorithm_seeds": [
+      17,
+      37
+    ],
+    "replay_rows": 4200,
+    "source": {
+      "seed": 130100,
+      "scenario": "abrupt",
+      "rows": 1200
+    }
+  }
+}

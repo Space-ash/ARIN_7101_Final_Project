@@ -1,0 +1,218 @@
+{
+  "status": "prepared_pending_human_confirmation",
+  "technical_checks_passed": true,
+  "technical_errors": [],
+  "formal_generated": false,
+  "frozen": false,
+  "approved_for_execution": false,
+  "evaluation_seeds": {
+    "stable": [
+      930000,
+      930001,
+      930002,
+      930003,
+      930004,
+      930005,
+      930006,
+      930007,
+      930008,
+      930009,
+      930010,
+      930011,
+      930012,
+      930013,
+      930014,
+      930015,
+      930016,
+      930017,
+      930018,
+      930019,
+      930020,
+      930021,
+      930022,
+      930023,
+      930024,
+      930025,
+      930026,
+      930027,
+      930028,
+      930029
+    ],
+    "abrupt": [
+      930100,
+      930101,
+      930102,
+      930103,
+      930104,
+      930105,
+      930106,
+      930107,
+      930108,
+      930109,
+      930110,
+      930111,
+      930112,
+      930113,
+      930114,
+      930115,
+      930116,
+      930117,
+      930118,
+      930119,
+      930120,
+      930121,
+      930122,
+      930123,
+      930124,
+      930125,
+      930126,
+      930127,
+      930128,
+      930129
+    ]
+  },
+  "expected_counts": {
+    "dialogues": 60,
+    "questions": 18000,
+    "outcomes": 72000,
+    "replay": 252000,
+    "episode_metrics": 420
+  },
+  "human_missing": [
+    {
+      "owner": "M1/M2",
+      "file": "audit_review.csv",
+      "requirement": "Confirm existing reviewer notes and complete ten joint verdicts; do not batch-approve unresolved rows",
+      "pending_rows": [
+        {
+          "seed": 130000,
+          "t": 0,
+          "verdict": "pending"
+        },
+        {
+          "seed": 130000,
+          "t": 2,
+          "verdict": "pending"
+        },
+        {
+          "seed": 130000,
+          "t": 12,
+          "verdict": "pending"
+        },
+        {
+          "seed": 130001,
+          "t": 1,
+          "verdict": "pending"
+        },
+        {
+          "seed": 130100,
+          "t": 99,
+          "verdict": "pending"
+        },
+        {
+          "seed": 130100,
+          "t": 149,
+          "verdict": "pending"
+        },
+        {
+          "seed": 130100,
+          "t": 150,
+          "verdict": "pending"
+        },
+        {
+          "seed": 130100,
+          "t": 151,
+          "verdict": "pending"
+        },
+        {
+          "seed": 130101,
+          "t": 149,
+          "verdict": "pending"
+        },
+        {
+          "seed": 130101,
+          "t": 299,
+          "verdict": "pending"
+        }
+      ]
+    },
+    {
+      "owner": "M3",
+      "file": "approvals.json",
+      "field": "m3_statistics_reviewed",
+      "requirement": "Review aggregation, primary family and supplemental intervals"
+    },
+    {
+      "owner": "M1-M5",
+      "file": "approvals.json",
+      "field": "all_used_seeds_disclosed",
+      "requirement": "Disclose unshared local/history/failed-run dialogue seeds or confirm no additions"
+    },
+    {
+      "owner": "M1",
+      "file": "approvals.json",
+      "field": "members.M1",
+      "requirement": "Real name, ISO date and approval of the exact bound package"
+    },
+    {
+      "owner": "M1",
+      "file": "approvals.json",
+      "field": "members.M1.seeds_disclosed",
+      "requirement": "Individual complete disclosure, including additional_dialogue_seeds or an empty list"
+    },
+    {
+      "owner": "M2",
+      "file": "approvals.json",
+      "field": "members.M2",
+      "requirement": "Real name, ISO date and approval of the exact bound package"
+    },
+    {
+      "owner": "M2",
+      "file": "approvals.json",
+      "field": "members.M2.seeds_disclosed",
+      "requirement": "Individual complete disclosure, including additional_dialogue_seeds or an empty list"
+    },
+    {
+      "owner": "M3",
+      "file": "approvals.json",
+      "field": "members.M3",
+      "requirement": "Real name, ISO date and approval of the exact bound package"
+    },
+    {
+      "owner": "M3",
+      "file": "approvals.json",
+      "field": "members.M3.seeds_disclosed",
+      "requirement": "Individual complete disclosure, including additional_dialogue_seeds or an empty list"
+    },
+    {
+      "owner": "M4",
+      "file": "approvals.json",
+      "field": "members.M4",
+      "requirement": "Real name, ISO date and approval of the exact bound package"
+    },
+    {
+      "owner": "M4",
+      "file": "approvals.json",
+      "field": "members.M4.seeds_disclosed",
+      "requirement": "Individual complete disclosure, including additional_dialogue_seeds or an empty list"
+    },
+    {
+      "owner": "M5",
+      "file": "approvals.json",
+      "field": "members.M5",
+      "requirement": "Real name, ISO date and approval of the exact bound package"
+    },
+    {
+      "owner": "M5",
+      "file": "approvals.json",
+      "field": "members.M5.seeds_disclosed",
+      "requirement": "Individual complete disclosure, including additional_dialogue_seeds or an empty list"
+    },
+    {
+      "owner": "M1-M5",
+      "file": "approvals.json",
+      "requirement": "No signed approval file exists; template is unsigned"
+    }
+  ],
+  "full_protocol_validation": "Audit pending/failed or unsigned"
+}

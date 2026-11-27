@@ -1,0 +1,29 @@
+{
+  "status": "revalidated_pending_human_confirmation",
+  "upstream_base": "0472e3220ea6215e89e72521b295297326dcd945",
+  "purpose": "Bind LF-normalized execution sources including upstream export validation; preserve evidence byte hashes through Git checkout.",
+  "source_package_manifest_sha256": "16b702bb67d68056aab976a9390fa57aa3908c1fd1447827696b39d5cc4de629",
+  "new_seed_inventory_sources": 62,
+  "retained_exclusion_ids": 154,
+  "formal_generated": false,
+  "approvals_generated": false,
+  "checks": [
+    "Six development dialogues independently reaudited",
+    "Forty audit arms reconstructed",
+    "M3 numerical and feedback checks rerun",
+    "Formal analysis reproduces existing demo primary and secondary tables",
+    "47 tests passed with existing full demo locally available"
+  ],
+  "git_index_verification": {
+    "evidence_file_hashes": 44,
+    "execution_source_hashes": 5,
+    "status": "passed"
+  },
+  "clean_checkout_preflight": {
+    "technical_checks_passed": true,
+    "formal_generated": false,
+    "frozen": false,
+    "approved_for_execution": false,
+    "method": "git checkout-index into a new empty directory; run preflight there with no outputs archive"
+  }
+}

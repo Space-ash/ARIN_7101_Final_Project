@@ -1,0 +1,16 @@
+{
+  "files": {
+    "audit_review.csv": "b39cb9c031e4019058238edc5ff78cb41870c749cc5d9809152b2efd8afd3cbc",
+    "development_outcomes.csv": "1eb32298b82ee9cdc7ddf2940d2d778b1bd43b256c8b6ddbeb375e0d5b211813",
+    "development_provenance.json": "487cfe49e2df8681cd0d8b605d55960c33219816dcfcbd1e38449a1fa682c867",
+    "evidence.json": "2bebf97c5b6dcafcc77cf8bf1f75669c5b036d75e41ac42360c227cd95d1e0a8",
+    "M1_review.md": "7d782fd3beee525a53cdbbc8e151026cdd495ee86dc854e94097e4fc7ac0bf9a",
+    "method_checks.json": "358e4d331139c71efb60c421993132458f620db54576200b25f58b899ca9905e",
+    "method_check_replay.csv": "9c11d73398c267771c88eb5f2d14b2b13e8c107bbcee69ea02d7c65f9dc04108",
+    "notebook_snapshot.ipynb": "b0a01a5f6416e16e97d6bef0edf2bde086dc2f6508b74898006c4ae21ebea712",
+    "plan_draft.json": "13d037fbe49308ea933b66b883408c9f0710850908dc342f787873828c45e70e",
+    "readiness.json": "4a133fac6694e3878853324aa86d12215eb25e50d16c2966229ce3e5dff7b128",
+    "strategy_checks.json": "1e4c7fe174960fca7cae9b9c9e73d69beec2049b9c840ebf729ec4ac0cfd387f",
+    "truth_checks.json": "c270218bb2a02ee3c2b159bb48c408ca06ffed75fbfb5da1ae7545b3b440734d"
+  }
+}

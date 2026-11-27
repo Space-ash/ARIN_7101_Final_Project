@@ -30,6 +30,30 @@ def write_new(path, value):
 ARMS = ('recent_short', 'recent_long', 'tfidf', 'resolved_tfidf')
 
 
+def analysis_specification():
+    """The E1 analysis approved with the plan; no result-dependent selection."""
+    return {
+        'version': 'm4-e1-v1',
+        'independent_unit': 'dialogue',
+        'aggregation': ['mean_questions_within_algorithm_seed', 'mean_algorithm_seeds_within_dialogue',
+                        'equal_weight_mean_dialogues_within_scenario'],
+        'primary': {'method': 'LaplaceCTS', 'reference': 'development_selected_fixed_arm',
+                    'metric': 'utility', 'scenarios': ['stable', 'abrupt'],
+                    'bootstrap': 'paired_dialogue_percentile', 'confidence': 0.95,
+                    'family_confidence': 0.975, 'family_size': 2,
+                    'practical_utility_threshold': 0.02},
+        'supplementary': {'comparisons': ['TS_minus_fixed', 'CTS_minus_TS', 'CTS_minus_RuleRouter'],
+                          'confidence': 0.95, 'family_adjusted': False, 'interpretation': 'exploratory'},
+        'metrics': ['y', 'cost', 'utility', 'coverage', 'outdated'],
+        'baseline_selection': 'development_only_equal_dialogue_utility_exact_ties_ARMS_order',
+        'bootstrap_keeps_baseline_fixed': True,
+        'direct_comparisons_share_indices_across_metrics': True,
+        'generator_defaults_bound_in_notebook': {'n_projects': 6, 'alias_probability': 0.5},
+        'failure_policy': 'retain_failed_attempt_and_seeds_no_silent_row_deletion',
+        'other_experiments': 'E2-E5 excluded from this E1 formal execution',
+    }
+
+
 def validate_config(cfg):
     import math
     if not isinstance(cfg, dict):
@@ -121,21 +145,28 @@ def validate_evidence(plan,evidence,code_files):
     if not set(zip(review.seed,review.t)).issubset(set(zip(data.seed,data.t))):raise ValueError('Audit questions outside development data')
 
 
-def validate_plan(plan, evidence, code_files):
-    import pandas as pd
+def validate_machine_plan(plan, evidence, code_files):
+    """Validate computable preparation without claiming human approval."""
     cfg = plan['config']
     validate_config(cfg)
-    if set(code_files) != {'notebook','runner','protocol','loader'}:
+    if set(code_files) != {'notebook','runner','protocol','loader','analysis'}:
         raise ValueError('All execution source snapshots required')
+    if plan.get('analysis_spec') != analysis_specification():
+        raise ValueError('Analysis specification differs from the implemented E1 protocol')
     if cfg['T'] != 300 or cfg['n_formal_per_scenario'] != 30:
         raise ValueError('This runner supports the agreed 30 x 300 design only')
     if set(plan['evaluation_seeds']) != {'stable', 'abrupt'}:
         raise ValueError('Two scenarios required')
+    if any(not isinstance(group, list) for group in plan['evaluation_seeds'].values()):
+        raise ValueError('Evaluation seed groups must be lists')
     seeds = [x for group in plan['evaluation_seeds'].values() for x in group]
-    if any(len(v) != 30 for v in plan['evaluation_seeds'].values()) or len(set(seeds)) != 60:
-        raise ValueError('Exactly 60 distinct dialogue seeds required')
     if any(type(s) is not int or s < 0 for s in seeds):
         raise ValueError('Seeds must be nonnegative integers')
+    if any(len(v) != 30 for v in plan['evaluation_seeds'].values()) or len(set(seeds)) != 60:
+        raise ValueError('Exactly 60 distinct dialogue seeds required')
+    used = plan.get('used_seeds')
+    if not isinstance(used, list) or any(type(s) is not int or s < 0 for s in used) or len(set(used)) != len(used):
+        raise ValueError('Used seeds must be distinct nonnegative integers')
     excluded = set(plan['used_seeds']) | set(range(20261105,20261135)) | set(range(20261205,20261235))
     # Known development/demo and test seeds from this repository.
     excluded |= set(range(130000,130003)) | set(range(130100,130103))
@@ -145,6 +176,22 @@ def validate_plan(plan, evidence, code_files):
         raise ValueError('Evaluation seeds overlap used/reference seeds')
     if len(cfg['algorithm_seeds']) != len(set(cfg['algorithm_seeds'])) or not cfg['algorithm_seeds']:
         raise ValueError('Invalid algorithm seeds')
+    inventory = plan.get('seed_inventory')
+    if inventory is not None:
+        if inventory.get('candidate_seeds') != plan['evaluation_seeds'] or inventory.get('collisions'):
+            raise ValueError('Seed inventory does not match noncolliding candidates')
+        if not set(inventory['known_used_seeds']).issubset(used):
+            raise ValueError('Used-seed list omits repository inventory')
+        if inventory.get('scan_errors'):
+            raise ValueError('Seed inventory contains unresolved scan errors')
+    validate_evidence(plan, evidence, code_files)
+    return {'technical_checks': 'passed', 'formal_generated': False,
+            'dialogues': len(seeds), 'questions': len(seeds) * cfg['T']}
+
+
+def validate_plan(plan, evidence, code_files):
+    import pandas as pd
+    validate_machine_plan(plan, evidence, code_files)
     review = pd.read_csv(evidence['audit_review']).fillna('')
     columns = ['seed','t','m1_reviewer','m2_reviewer','verdict','m1_notes','m2_notes']
     if not set(columns).issubset(review) or len(review)!=10 or review.duplicated(['seed','t']).any():
@@ -169,13 +216,19 @@ def validate_plan(plan, evidence, code_files):
             datetime.fromisoformat(entry['date'])
         except ValueError as exc:
             raise ValueError('Invalid approval date: '+member) from exc
+        additional=entry.get('additional_dialogue_seeds')
+        if entry.get('seeds_disclosed') is not True or not isinstance(additional,list):
+            raise ValueError('Missing individual seed disclosure: '+member)
+        if any(type(s) is not int or s<0 for s in additional) or len(set(additional))!=len(additional):
+            raise ValueError('Invalid individual seed disclosure: '+member)
+        if not set(additional).issubset(plan['used_seeds']):
+            raise ValueError('Disclosed seeds absent from bound plan: '+member)
     if approvals.get('m3_statistics_reviewed') is not True or approvals.get('all_used_seeds_disclosed') is not True:
         raise ValueError('Statistics review/seed disclosure not confirmed')
     # Require upstream evidence as actual files; signatures bind their content.
     for name in ['truth_checks','strategy_checks','method_checks','development_outcomes']:
         if name not in evidence:
             raise ValueError('Missing upstream evidence: '+name)
-    validate_evidence(plan,evidence,code_files)
     return approvals
 
 

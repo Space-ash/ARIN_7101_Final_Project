@@ -1,0 +1,47 @@
+{
+  "config_sha256": "ce9c4d07dc89193fee4d9fcb5b9cb47304fd546f9261e07bded80f7fda0b3e7d",
+  "notebook_sha256": "16cf1b9fe0fd25498253b9199c9c40f7b7f9254526a570de031babe897ccffbd",
+  "development_sha256": "1eb32298b82ee9cdc7ddf2940d2d778b1bd43b256c8b6ddbeb375e0d5b211813",
+  "status": "passed",
+  "payload": {
+    "fixture_checks": [
+      {
+        "case": "手写答案/coverage/16行唯一键",
+        "result": "pass"
+      },
+      {
+        "case": "预算边界/整条打包/重复候选",
+        "result": "pass"
+      },
+      {
+        "case": "空历史/空词表/缺focus/预算和时序",
+        "result": "pass"
+      },
+      {
+        "case": "旧值/更新/同值复述/UNKNOWN/outdated评分",
+        "result": "pass"
+      },
+      {
+        "case": "未来隔离/隐藏标签隔离/输入未被修改",
+        "result": "pass"
+      },
+      {
+        "case": "focus锚点预算/正则计数/效用公式",
+        "result": "pass"
+      },
+      {
+        "case": "检索同分/8候选上限/非法公开输入",
+        "result": "pass"
+      }
+    ],
+    "development_checks": {
+      "unique_keys_four_arms_and_matching_metadata": "pass",
+      "cost_count_and_utility_consistency": "pass",
+      "m1_independent_truth_audit": "pass",
+      "audit_coverage_and_reconstruction_match_outcomes": "pass"
+    },
+    "row_counts": {
+      "outcomes": 7200
+    }
+  }
+}

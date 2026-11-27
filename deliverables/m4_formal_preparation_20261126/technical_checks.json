@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "formal_generated": false,
+  "development_rows": 7200,
+  "truth_questions": 1800,
+  "fixture_count": 7,
+  "rebuilt_audit_arms": 40,
+  "method_replay_rows": 4200,
+  "formal_analysis_test_source": "D:\\WorkSpace\\StatProject\\outputs\\pr_m4_e1_20261126\\outputs\\demo\\m4_e1_demo_20261126",
+  "formal_analysis_demo_dialogues": 12,
+  "old_primary_secondary_reproduced": true,
+  "code_compatibility_cells": 20,
+  "original_source_manifest_sha256": "12cd7c60052921483923fad43461eab178dc1bb64550df7141b3a019f4c14098"
+}

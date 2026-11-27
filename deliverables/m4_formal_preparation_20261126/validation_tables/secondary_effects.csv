@@ -1,0 +1,3 @@
+scenario,method,baseline,n,effect,low,high,family_low,family_high
+stable,TS,recent_short,6,-0.032038574218749984,-0.0564263237847222,-0.009841037326388857,,
+abrupt,TS,resolved_tfidf,6,-0.07217122395833336,-0.08962782118055561,-0.05623833550347226,,

@@ -18,8 +18,8 @@ class ProtocolTests(unittest.TestCase):
                  p_recent_stable=.9,p_recent_abrupt_before=.9,p_recent_abrupt_after=.1,
                  update_probability=.25,initial_conflict_fraction=.25)
         cfg['lambda']=.5
-        self.plan=dict(config=cfg,evaluation_seeds=dict(stable=list(range(800000,800030)),abrupt=list(range(800100,800130))),used_seeds=[],baselines=dict(stable=ARMS[0],abrupt=ARMS[0]))
-        self.codes={k:self.root/k for k in ['notebook','runner','protocol','loader']}
+        self.plan=dict(config=cfg,analysis_spec=analysis_specification(),evaluation_seeds=dict(stable=list(range(800000,800030)),abrupt=list(range(800100,800130))),used_seeds=[],baselines=dict(stable=ARMS[0],abrupt=ARMS[0]))
+        self.codes={k:self.root/k for k in ['notebook','runner','protocol','loader','analysis']}
         for p in self.codes.values():p.write_text('synthetic source')
         names=['truth_checks','strategy_checks','method_checks','development_outcomes','audit_review','development_provenance','approvals']
         self.evidence={k:self.root/(k+'.json') for k in names}
@@ -37,7 +37,7 @@ class ProtocolTests(unittest.TestCase):
     def put(self,name,value):self.evidence[name].write_text(json.dumps(value))
     def get(self,name):return json.loads(self.evidence[name].read_text())
     def sign(self):
-        self.put('approvals',dict(plan_sha256=canonical_hash(self.plan),code_sha256={k:digest(v) for k,v in self.codes.items()},evidence_sha256={k:digest(v) for k,v in self.evidence.items() if k!='approvals'},members={k:dict(name='SYNTHETIC',date='2026-11-25',approved=True) for k in ['M1','M2','M3','M4','M5']},m3_statistics_reviewed=True,all_used_seeds_disclosed=True))
+        self.put('approvals',dict(plan_sha256=canonical_hash(self.plan),code_sha256={k:digest(v) for k,v in self.codes.items()},evidence_sha256={k:digest(v) for k,v in self.evidence.items() if k!='approvals'},members={k:dict(name='SYNTHETIC',date='2026-11-25',approved=True,seeds_disclosed=True,additional_dialogue_seeds=[]) for k in ['M1','M2','M3','M4','M5']},m3_statistics_reviewed=True,all_used_seeds_disclosed=True))
     def validate(self):return validate_plan(self.plan,self.evidence,self.codes)
 
     def test_valid_freeze_and_tamper(self):
@@ -45,6 +45,32 @@ class ProtocolTests(unittest.TestCase):
         with self.assertRaises(FileExistsError):freeze(self.plan,self.evidence,self.codes,dest)
         (dest/'code/notebook').write_text('changed')
         with self.assertRaises(ValueError):verify_frozen(dest)
+
+    def test_analysis_is_bound_and_spec_is_fixed(self):
+        (self.root/'analysis').write_text('changed analysis')
+        with self.assertRaisesRegex(ValueError,'code hashes'):self.validate()
+        self.sign()
+        self.plan['analysis_spec']['primary']['family_size']=1
+        self.sign()
+        with self.assertRaisesRegex(ValueError,'Analysis specification'):self.validate()
+
+    def test_machine_readiness_is_not_human_approval(self):
+        review=pd.read_csv(self.evidence['audit_review']);review.verdict='pending'
+        review.to_csv(self.evidence['audit_review'],index=False)
+        self.evidence['approvals'].unlink()
+        result=validate_machine_plan(self.plan,self.evidence,self.codes)
+        self.assertEqual(result['technical_checks'],'passed')
+        self.assertFalse(result['formal_generated'])
+        with self.assertRaisesRegex(ValueError,'pending'):self.validate()
+
+    def test_individual_seed_disclosure_cannot_bypass_bound_plan(self):
+        approvals=self.get('approvals')
+        approvals['members']['M2']['additional_dialogue_seeds']=[800000]
+        self.put('approvals',approvals)
+        with self.assertRaisesRegex(ValueError,'absent from bound plan'):self.validate()
+        self.plan['used_seeds']=[800000]
+        self.sign()
+        with self.assertRaisesRegex(ValueError,'overlap'):self.validate()
 
     def test_config_missing_invalid(self):
         original=dict(self.plan['config'])

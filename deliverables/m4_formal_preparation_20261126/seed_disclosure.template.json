@@ -1,0 +1,40 @@
+{
+  "instructions": "Each member confirms visible inventory and adds unshared dialogue seeds; empty additions require an explicit complete confirmation.",
+  "members": {
+    "M1": {
+      "name": "",
+      "date": "",
+      "confirmed_complete": false,
+      "additional_dialogue_seeds": [],
+      "notes": ""
+    },
+    "M2": {
+      "name": "",
+      "date": "",
+      "confirmed_complete": false,
+      "additional_dialogue_seeds": [],
+      "notes": ""
+    },
+    "M3": {
+      "name": "",
+      "date": "",
+      "confirmed_complete": false,
+      "additional_dialogue_seeds": [],
+      "notes": ""
+    },
+    "M4": {
+      "name": "",
+      "date": "",
+      "confirmed_complete": false,
+      "additional_dialogue_seeds": [],
+      "notes": ""
+    },
+    "M5": {
+      "name": "",
+      "date": "",
+      "confirmed_complete": false,
+      "additional_dialogue_seeds": [],
+      "notes": ""
+    }
+  }
+}

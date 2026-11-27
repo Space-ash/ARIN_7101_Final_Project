@@ -1,0 +1,564 @@
+{
+  "experiment": "E1",
+  "mode": "development",
+  "status": "exploratory_complete_pending_review",
+  "formal_generated": false,
+  "already_viewed": true,
+  "run": "D:\\WorkSpace\\StatProject\\outputs\\development\\m4_e1_development_20261126",
+  "manifest_sha256": "ab5af9c35dea6308a8e344aa4fd91274e02de76cea4067ce4c046234e8343678",
+  "config": {
+    "T": 300,
+    "n_dev_per_scenario": 3,
+    "n_demo_per_scenario": 6,
+    "n_formal_per_scenario": 30,
+    "dev_seed": 130000,
+    "demo_seed": 730000,
+    "formal_seed": null,
+    "algorithm_seeds": [
+      17,
+      37
+    ],
+    "p_recent_stable": 0.9,
+    "p_recent_abrupt_before": 0.9,
+    "p_recent_abrupt_after": 0.1,
+    "update_probability": 0.25,
+    "initial_conflict_fraction": 0.25,
+    "budgets": {
+      "recent_short": 128,
+      "recent_long": 512,
+      "tfidf": 256,
+      "resolved_tfidf": 256
+    },
+    "lambda": 0.5,
+    "cost_reference": 512,
+    "refit_every": 5,
+    "prior_precision": 1.0,
+    "bootstrap_seed": 2026,
+    "n_bootstrap": 2000
+  },
+  "baselines": {
+    "abrupt": "resolved_tfidf",
+    "stable": "recent_short"
+  },
+  "provenance": {
+    "source_manifest_sha256": "30b32b1b9eae03d746b64ce5c516b1153c0fd362444a3d9c591cd79d26938588",
+    "development_manifest_sha256": "30b32b1b9eae03d746b64ce5c516b1153c0fd362444a3d9c591cd79d26938588",
+    "compatible_code_cells": [
+      "m1-checks-workspace",
+      "m1-generation-skeleton",
+      "m2-budget-packing",
+      "m2-checks-workspace",
+      "m2-context-walkthrough",
+      "m2-cost-breakdown",
+      "m2-development-run",
+      "m2-episode-evaluation",
+      "m2-evaluation-walkthrough",
+      "m2-evidence-export-pending",
+      "m2-four-strategies",
+      "m2-isolation-and-version-checks",
+      "m2-reader-walkthrough",
+      "m2-short-history-fixture",
+      "m2-strategies-skeleton",
+      "m2-template-parser",
+      "m2-tfidf-ranking",
+      "m3-checks-workspace",
+      "m3-selector-skeleton",
+      "shared-protocol-draft"
+    ],
+    "source_hashes_verified": true,
+    "current_generator_reproduced": true,
+    "current_replay_matches_archived": true,
+    "fixed_baseline_selected_on_development": true,
+    "formal_generated": false,
+    "selected_feedback_and_complete_grids": "passed"
+  },
+  "counts": {
+    "dialogues": 6,
+    "questions": 1800,
+    "outcomes": 7200,
+    "replay": 25200,
+    "episode_metrics": 42
+  },
+  "tables": {
+    "method_summary": [
+      {
+        "scenario": "abrupt",
+        "method": "LaplaceCTS",
+        "y": 0.830555555555556,
+        "cost": 151.51277777777776,
+        "utility": 0.682593858506944,
+        "coverage": 0.818333333333333,
+        "outdated": 0.13
+      },
+      {
+        "scenario": "abrupt",
+        "method": "RuleRouter",
+        "y": 0.864444444444444,
+        "cost": 151.07000000000002,
+        "utility": 0.716915147569444,
+        "coverage": 0.864444444444444,
+        "outdated": 0.135555555555556
+      },
+      {
+        "scenario": "abrupt",
+        "method": "TS",
+        "y": 0.645,
+        "cost": 126.00388888888888,
+        "utility": 0.521949327256944,
+        "coverage": 0.637777777777778,
+        "outdated": 0.076111111111111
+      },
+      {
+        "scenario": "abrupt",
+        "method": "recent_long",
+        "y": 0.652222222222222,
+        "cost": 547.7311111111111,
+        "utility": 0.117328559027778,
+        "coverage": 0.652222222222222,
+        "outdated": 0.0
+      },
+      {
+        "scenario": "abrupt",
+        "method": "recent_short",
+        "y": 0.497777777777778,
+        "cost": 83.98333333333333,
+        "utility": 0.415762803819444,
+        "coverage": 0.497777777777778,
+        "outdated": 0.0
+      },
+      {
+        "scenario": "abrupt",
+        "method": "resolved_tfidf",
+        "y": 0.835555555555556,
+        "cost": 211.28666666666666,
+        "utility": 0.629220920138889,
+        "coverage": 0.835555555555556,
+        "outdated": 0.164444444444444
+      },
+      {
+        "scenario": "abrupt",
+        "method": "tfidf",
+        "y": 0.406666666666667,
+        "cost": 218.09888888888887,
+        "utility": 0.193679470486111,
+        "coverage": 0.416666666666667,
+        "outdated": 0.121111111111111
+      },
+      {
+        "scenario": "stable",
+        "method": "LaplaceCTS",
+        "y": 0.956666666666667,
+        "cost": 100.75555555555555,
+        "utility": 0.858272569444444,
+        "coverage": 0.947222222222222,
+        "outdated": 0.016666666666667
+      },
+      {
+        "scenario": "stable",
+        "method": "RuleRouter",
+        "y": 0.985555555555556,
+        "cost": 97.77333333333333,
+        "utility": 0.890073784722222,
+        "coverage": 0.985555555555556,
+        "outdated": 0.014444444444444
+      },
+      {
+        "scenario": "stable",
+        "method": "TS",
+        "y": 0.893333333333333,
+        "cost": 102.61555555555556,
+        "utility": 0.793122829861111,
+        "coverage": 0.892777777777778,
+        "outdated": 0.008333333333333
+      },
+      {
+        "scenario": "stable",
+        "method": "recent_long",
+        "y": 0.928888888888889,
+        "cost": 547.5155555555556,
+        "utility": 0.394205729166667,
+        "coverage": 0.928888888888889,
+        "outdated": 0.0
+      },
+      {
+        "scenario": "stable",
+        "method": "recent_short",
+        "y": 0.89,
+        "cost": 84.01,
+        "utility": 0.807958984375,
+        "coverage": 0.89,
+        "outdated": 0.0
+      },
+      {
+        "scenario": "stable",
+        "method": "resolved_tfidf",
+        "y": 0.811111111111111,
+        "cost": 217.66666666666666,
+        "utility": 0.598546006944444,
+        "coverage": 0.811111111111111,
+        "outdated": 0.188888888888889
+      },
+      {
+        "scenario": "stable",
+        "method": "tfidf",
+        "y": 0.123333333333333,
+        "cost": 221.79222222222222,
+        "utility": -0.093260633680556,
+        "coverage": 0.21,
+        "outdated": 0.016666666666667
+      }
+    ],
+    "primary_effects": [
+      {
+        "scenario": "stable",
+        "method": "LaplaceCTS",
+        "baseline": "recent_short",
+        "n": 3,
+        "effect": 0.050313585069444,
+        "low": 0.036608072916667,
+        "high": 0.058707682291667,
+        "family_low": 0.036608072916667,
+        "family_high": 0.058707682291667
+      },
+      {
+        "scenario": "abrupt",
+        "method": "LaplaceCTS",
+        "baseline": "resolved_tfidf",
+        "n": 3,
+        "effect": 0.053372938368056,
+        "low": 0.036845703125,
+        "high": 0.069812825520833,
+        "family_low": 0.036845703125,
+        "family_high": 0.069812825520833
+      }
+    ],
+    "secondary_effects": [
+      {
+        "scenario": "stable",
+        "method": "TS",
+        "baseline": "recent_short",
+        "n": 3,
+        "effect": -0.014836154513889,
+        "low": -0.0247607421875,
+        "high": -0.005130208333333,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "abrupt",
+        "method": "TS",
+        "baseline": "resolved_tfidf",
+        "n": 3,
+        "effect": -0.107271592881944,
+        "low": -0.152443033854167,
+        "high": -0.0702880859375,
+        "family_low": null,
+        "family_high": null
+      }
+    ],
+    "direct_comparisons": [
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "metric": "y",
+        "n": 3,
+        "effect": 0.063333333333333,
+        "low": 0.051666666666667,
+        "high": 0.071666666666667,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "metric": "cost",
+        "n": 3,
+        "effect": -1.859999999999999,
+        "low": -12.085000000000008,
+        "high": 10.166666666666671,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "metric": "utility",
+        "n": 3,
+        "effect": 0.065149739583333,
+        "low": 0.04173828125,
+        "high": 0.083468424479167,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "metric": "coverage",
+        "n": 3,
+        "effect": 0.054444444444445,
+        "low": 0.045,
+        "high": 0.06,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "metric": "outdated",
+        "n": 3,
+        "effect": 0.008333333333333,
+        "low": -0.008333333333333,
+        "high": 0.016666666666667,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "metric": "y",
+        "n": 3,
+        "effect": -0.028888888888889,
+        "low": -0.033333333333333,
+        "high": -0.026666666666667,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "metric": "cost",
+        "n": 3,
+        "effect": 2.982222222222224,
+        "low": 1.846666666666678,
+        "high": 5.019999999999996,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "metric": "utility",
+        "n": 3,
+        "effect": -0.031801215277778,
+        "low": -0.03513671875,
+        "high": -0.028697916666667,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "metric": "coverage",
+        "n": 3,
+        "effect": -0.038333333333333,
+        "low": -0.041666666666667,
+        "high": -0.035,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "metric": "outdated",
+        "n": 3,
+        "effect": 0.002222222222222,
+        "low": 0.001666666666667,
+        "high": 0.003333333333333,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "metric": "y",
+        "n": 3,
+        "effect": 0.185555555555556,
+        "low": 0.148333333333333,
+        "high": 0.235,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "metric": "cost",
+        "n": 3,
+        "effect": 25.508888888888894,
+        "low": 8.430000000000007,
+        "high": 46.808333333333316,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "metric": "utility",
+        "n": 3,
+        "effect": 0.16064453125,
+        "low": 0.140100911458333,
+        "high": 0.189288736979167,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "metric": "coverage",
+        "n": 3,
+        "effect": 0.180555555555556,
+        "low": 0.15,
+        "high": 0.235,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "metric": "outdated",
+        "n": 3,
+        "effect": 0.053888888888889,
+        "low": 0.026666666666667,
+        "high": 0.108333333333333,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "metric": "y",
+        "n": 3,
+        "effect": -0.033888888888889,
+        "low": -0.045,
+        "high": -0.021666666666667,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "metric": "cost",
+        "n": 3,
+        "effect": 0.442777777777773,
+        "low": -0.301666666666676,
+        "high": 1.789999999999992,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "metric": "utility",
+        "n": 3,
+        "effect": -0.0343212890625,
+        "low": -0.04484375,
+        "high": -0.0213720703125,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "metric": "coverage",
+        "n": 3,
+        "effect": -0.046111111111111,
+        "low": -0.056666666666667,
+        "high": -0.038333333333333,
+        "family_low": null,
+        "family_high": null
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "metric": "outdated",
+        "n": 3,
+        "effect": -0.005555555555556,
+        "low": -0.018333333333333,
+        "high": 0.003333333333333,
+        "family_low": null,
+        "family_high": null
+      }
+    ],
+    "effect_decomposition": [
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_fixed",
+        "reference": "resolved_tfidf",
+        "delta_y": -0.005,
+        "delta_cost": -59.7738888888889,
+        "delta_utility": 0.053372938368056,
+        "delta_coverage": -0.017222222222222,
+        "delta_outdated": -0.034444444444444
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "delta_y": -0.033888888888889,
+        "delta_cost": 0.442777777777773,
+        "delta_utility": -0.0343212890625,
+        "delta_coverage": -0.046111111111111,
+        "delta_outdated": -0.005555555555556
+      },
+      {
+        "scenario": "abrupt",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "delta_y": 0.185555555555556,
+        "delta_cost": 25.508888888888894,
+        "delta_utility": 0.16064453125,
+        "delta_coverage": 0.180555555555556,
+        "delta_outdated": 0.053888888888889
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_fixed",
+        "reference": "recent_short",
+        "delta_y": 0.066666666666667,
+        "delta_cost": 16.745555555555555,
+        "delta_utility": 0.050313585069444,
+        "delta_coverage": 0.057222222222222,
+        "delta_outdated": 0.016666666666667
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_router",
+        "reference": "RuleRouter",
+        "delta_y": -0.028888888888889,
+        "delta_cost": 2.982222222222224,
+        "delta_utility": -0.031801215277778,
+        "delta_coverage": -0.038333333333333,
+        "delta_outdated": 0.002222222222222
+      },
+      {
+        "scenario": "stable",
+        "comparison": "cts_vs_ts",
+        "reference": "TS",
+        "delta_y": 0.063333333333333,
+        "delta_cost": -1.859999999999999,
+        "delta_utility": 0.065149739583333,
+        "delta_coverage": 0.054444444444445,
+        "delta_outdated": 0.008333333333333
+      }
+    ]
+  }
+}

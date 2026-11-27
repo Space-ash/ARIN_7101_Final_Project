@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-25",
+  "status": "technical_checks_passed_human_signoff_pending",
+  "checks": {
+    "full_outcome_rows": 7200,
+    "questions": 1800,
+    "reconstructed_audit_arms": 40,
+    "candidate_dialogue_rows": 36,
+    "full_outcomes_match": true,
+    "candidate_metrics_and_deltas_match": true
+  },
+  "baselines_by_candidate": {
+    "8": {
+      "abrupt": "resolved_tfidf",
+      "stable": "recent_short"
+    },
+    "9": {
+      "abrupt": "resolved_tfidf",
+      "stable": "recent_short"
+    },
+    "12": {
+      "abrupt": "resolved_tfidf",
+      "stable": "recent_short"
+    }
+  },
+  "recommended_candidate_limit": 8,
+  "human_review_counts": {
+    "pending": 10
+  },
+  "hashes": {
+    "m2_outer_archive": "8ebf25283cfbb1bef692e6da3816856c3f421f5ff985f171c4289fde4fa92664",
+    "m2_inner_archive": "d37124517525f34223bc1cfe89cc11fb420689cca6b83237c187fb095e3cf5ba",
+    "live_review": "493c1fb8eeb99313dc6e82af790f4ea12e4b1ec38fa179efca04aec1ee7b8aee",
+    "m2_candidate_table": "40fbb04ec6d72297d0c1f66b871df89aa8d8548efd235bd482647b4ae906d407",
+    "m4_default_manifest": "30b32b1b9eae03d746b64ce5c516b1153c0fd362444a3d9c591cd79d26938588",
+    "m4_candidate_manifest": "ec61419ddaf62c20e54d429ccdc0e27f07879e96804c445fe5db0b1686c4a9c7"
+  },
+  "scope": "Automated technical acceptance; no human signatures, approval or formal execution generated."
+}

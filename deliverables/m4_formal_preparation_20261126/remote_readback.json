@@ -1,0 +1,12 @@
+{
+  "checked_date": "2026-11-26",
+  "repository": "Space-ash/ARIN_7101_Final_Project",
+  "main_commit": "0472e3220ea6215e89e72521b295297326dcd945",
+  "main_compare_status": "identical",
+  "formal_runs": [],
+  "audit_review_git_blob_sha": "259d7d541003b83cf054001337053224c473983a",
+  "packaged_audit_review_matches_remote_blob": true,
+  "joint_verdicts": {"pending": 10},
+  "method": "Read-only GitHub connector comparison and file fetch, followed by local Git blob hash verification",
+  "limitations": "This checks shared remote records only; unshared member runs require individual disclosure. No remote mutation was performed."
+}

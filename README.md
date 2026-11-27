@@ -3,6 +3,8 @@
 
 目标：受控合成长对话中的贝叶斯上下文选择，研究正确性与输入成本取舍。无需真实LLM、外部数据或API密钥。
 
+当前进度见 [2026-11-26 项目进度报告](project_progress_11.26.md)：M1–M3 核心实现和开发验证已完成；M4 已完成 E1 开发/demo 分析及 60 条正式实验准备，尚待人工确认、冻结和正式运行；M5 接口及最终汇报待交付。[成员进度表](team_workspace/team_progress.csv) · [正式实验人工确认清单](deliverables/m4_formal_preparation_20261126/HUMAN_CONFIRMATION.md)
+
 ## 从哪里开始
 1. 读notebook共同范围与本人的M1–M5任务区间，在team_workspace/team_progress.csv认领。
 2. 在deliverables/Mx_notes.md写自己的理解、实现计划与测试设计，用自建微型案例开始编码。
@@ -36,11 +38,11 @@ PowerShell激活：.\.venv\Scripts\Activate.ps1；macOS/Linux：source .venv/bin
 - docs：协作、输出契约、脚手架检查范围；docs/proposal保留原计划背景，旧流程以当前文档为准。
 - team_workspace：人工进度、接口决策、正式尝试登记。
 - deliverables：个人研究记录、slides、提交清单；视频用链接。
-- scripts：清输出、结构检查和第0节环境/路径测试工具，没有实验执行器或研究实现。
+- scripts：清输出、结构/接口测试，以及 M4 开发探索、E1 分析、正式准备和冻结/运行工具；用法见 [M4 工作流](docs/M4_FORMAL_WORKFLOW.md)。
 - reference：原始可行性完整本，以及应要求保留的修改前完整release（ARIN7101_Context_Bandit_Release_v1_Complete_Reference.ipynb）；当前工作本不导入或执行。借鉴须注明来源和自己的理解/验证，复制运行不是个人贡献。
 - outputs/<mode>/<run_id>：第0节初始化data/tables/audit/config/figures/reports分区和环境记录，研究文件由成员实现后生成，Git忽略。详见[输出契约](docs/OUTPUT_CONTRACT.md)。
 
-当前不附带上一版自动demo的结果、图表和源码快照。M4自行编写集成入口，M5自行实现制图与评估。
+当前 M4 已有开发/demo 结果和正式准备包；完整运行数据位于被 Git 忽略的 outputs 目录，需另行共享归档。M5 制图与独立评估仍待实现。
 
 ## 提交检查
     python scripts/clean_notebook.py
@@ -54,7 +56,7 @@ PowerShell激活：.\.venv\Scripts\Activate.ps1；macOS/Linux：source .venv/bin
 
 成员分支只改本人cell/说明；公共接口变化写team_workspace/interface_decisions.md并通知下游，M4顺序合并。Git提交源码和人工证据；完整run另行共享，登记commit/地址/校验和。
 
-[变更说明](docs/RELEASE_NOTES.md) · [本次验证范围](docs/VALIDATION.md)。研究实现、成员验收、正式结果和最终汇报均待小组完成。
+[变更说明](docs/RELEASE_NOTES.md) · [历史脚手架验证范围](docs/VALIDATION.md) · [当前进度与验证证据](project_progress_11.26.md)。成员最终验收、正式结果和最终汇报仍待小组完成。
 
 ## M1–M3 接入自检（试用）
 
@@ -63,3 +65,5 @@ PowerShell激活：.\.venv\Scripts\Activate.ps1；macOS/Linux：source .venv/bin
 ## 研究方法调研
 
 见 [调研文档库](docs/research/README.md)，包括 TS/CTS 效果、成本与统计不确定性的数学测评方法。
+
+具体实验测什么、控制什么、如何解释结果，见 [实验设计与数学评估说明](docs/EXPERIMENT_DESIGN.md)。

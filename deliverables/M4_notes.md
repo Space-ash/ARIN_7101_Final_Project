@@ -156,3 +156,115 @@ CTS的两个候选在每个场景都是2胜1负，提升并不一致。abrupt下
 判断：尚不足以修改正式默认值。每场景只有3条已反复使用的开发对话，结果用于发现取舍，不作显著性或泛化结论。两个检索臂同时变动，不能隔离单臂贡献。候选数改变反馈和选择，TS行为变化不是单纯重算分数。
 
 建议下一步由M2确认能否只扩大resolved_tfidf候选、保持原始tfidf=8，以区分两个检索臂的作用；如需新增开发对话，应预先固定范围并登记已用seed。不要扩展正式测试数据来调参。M3可检查TS在abrupt下候选12的选臂轨迹以定位退步机制。当前共同默认值仍为8；以上均为M4探索建议，等待相关成员讨论。
+
+## 13. M2交接技术验收（2026-11-25）
+
+已获取远程最新版，origin/main仍为540ef5f；当前m4-integration-stage2包含该版本及PR #5的M4工作。PR #5仍OPEN，无审核记录，本轮未合并或推送。
+执行 `python scripts/verify_m4_m2_acceptance.py`：先复跑M2归档验证，再与M4保存的独立运行结果交叉核对。完整7,200行四臂结果逐字段一致（排除构造耗时），1,800题生成元数据/效用核验通过，40条人工审计材料中的策略记录重建一致。M2候选表36行（6条对话×2检索臂×3候选上限）的准确率、成本、效用、旧值率及各自相对8的差值与M4复算一致。两轮M4归档逐文件哈希再次检查通过。
+
+三个候选上限的固定基线映射均为 stable→recent_short、abrupt→resolved_tfidf。技术结果支持M2提出保留8，继续沿用原开发表和回放，不需要仅为了收尾追加参数网格。
+
+结论为“技术核验通过，人工签收待完成”，不是代替M4本人签名。机器可读证据与输入哈希见 deliverables/M4_M2_acceptance_20261125.json。当前唯一协作审查表10条全部pending，M1/M2最终双签、M3统计复核与全组正式方案批准仍待完成；本轮没有生成正式数据或修改正式登记。
+
+## 14. M1 审查核对与新版证据（2026-11-26）
+
+运行入口：`python scripts/prepare_m4_development_evidence.py --run-id <新的唯一名称>`。此次成功归档为 `outputs/development/m4_evidence_20261126_v2`，以 M1 远端分支的不可变提交快照保存审查文档和表格，不改写团队联合判定。
+
+- 当前工作本重新生成六条开发对话，重算 7,200 条四臂结果；执行 M2 七项 fixture、M1 全部开发真值检查及十题/四十臂重建，与既有审计样例完全一致。
+- 核对 M1 两张摘要表共20行：真值表的历史范围、答案、证据ID、旧值数量及题型/状态，策略表的正确性、覆盖、旧值标记和成本。逐题叙述与这些证据一致；自动检查不等于对所有自然语言陈述的形式证明或本人签收。
+- 重新执行 M3 的 Beta 后验、Laplace 梯度/Hessian、正定性、重置及未选臂反馈隔离检查，保存4,200行方法验证回放；此项不是完整正式实验，也不替代 M3 对统计方案的复核。
+- 输出三类带配置/工作本/开发表哈希的检查信封、development_provenance、原始工作本快照、开发表、方法回放、evidence 映射、计划草稿、readiness 和文件哈希 manifest。validate_evidence 已通过；十项协议回归测试通过。
+- 计划草稿的正式种子为空，used_seeds 仅列本次开发种子，尚需全组补齐披露。evidence 映射中的 approvals.json 尚不存在，未生成占位批准或代签。
+- M1/M2 十题 verdict 仍全部 pending。需要本人确认与联合判定、M3 统计审查、正式种子及全组已用种子披露、M1–M5批准后才能冻结。审查表或代码改变需重核绑定和批准。
+- 首次目录 m4_evidence_20261126 因本次新增解析器把九列表格误按十列处理而失败，保留 failure.json；修正后独立重跑 v2。formal_runs.json 仍为空，未生成正式数据。
+
+这些是本地待审改动；输出目录按仓库规则忽略，交接时须同时提供完整归档，不能只提交说明就声称证据已交付。
+
+本批交接归档：`deliverables/M4_development_evidence_20261126.zip`（SHA256 `181c6296f52b9e38eeb241902d10eb1a1f9673a14d65e683a979f1eb34e1c0a4`）。解压后保留目录结构，内部 manifest 可核验12个文件。归档包含待确认审查快照，不含 approvals.json；计划仍为草稿。此前 M2 技术验收记录一并提交，历史记录中的审查哈希对应当时版本，不代表本次 M1 新快照。
+
+## 15. Methods 补充计划与 E1 开发/demo结果（2026-11-26）
+
+依据根目录 `ARIN7101_Methods_CN.md` 和用户本轮指令，将评估补充为 [E1–E5 实验计划](../docs/M4_FORMAL_WORKFLOW.md#2026-11-26-补充实验计划e1e5)。E1整合七方法总体评估、CTS相对开发固定臂/TS/RuleRouter的直接配对比较和准确率—成本分解；E2为同模型等范数常量特征消融；E3为阶段/题型及预定曲线；E4为λ敏感性重放；E5保留可选单检索臂、组件和算法种子诊断。
+
+本轮先推进E1。保留两个场景CTS−开发固定臂的原主比较及95%/97.5%区间；新增CTS−TS和CTS−RuleRouter仅作探索性比较、报告95%区间。独立统计单位仍为对话，不将题目或算法种子视为额外样本。开发与demo分开输出；基线选择仅用开发数据，不在demo中重选。
+
+默认开发数据每场景3条、demo每场景6条均已看过。本轮已用新入口 `scripts/run_m4_experiment1.py` 和公共分析 `scripts/m4_analysis.py` 完成这两个阶段的重新回放与统计，保存直接比较、五指标分解和来源证据。**完成的是6条开发对话及12条demo对话的E1分析，60条独立正式对话尚未执行。** 两个阶段分开报告，不能合并为新的未看测试集。
+
+版本状态更正：本次只读远端核对时，main已为`0472e3220ea6215e89e72521b295297326dcd945`，[PR #5](https://github.com/Space-ash/ARIN_7101_Final_Project/pull/5) 和 [PR #6](https://github.com/Space-ash/ARIN_7101_Final_Project/pull/6) 均已合并；第13节的“PR仍OPEN”是当时快照。本地当前基线为`ca90813`，不能据文档更新声称已同步远端代码。正式登记仍为空，十题联合判定、M3统计复核、正式种子及全组已用种子披露、真实批准仍需完成；本轮授权推进实验不代替他人的审查声明。
+
+### 15.1 实际运行和来源核验
+
+| 阶段与归档 | 对话数（每场景） | 问题数 | 四臂结果行 | 回放行 | 对话指标行 |
+|---|---:|---:|---:|---:|---:|
+| `outputs/development/m4_e1_development_20261126` | 6（3） | 1,800 | 7,200 | 25,200 | 42 |
+| `outputs/demo/m4_e1_demo_20261126` | 12（6） | 3,600 | 14,400 | 50,400 | 84 |
+
+开发来源为 `m4_default_benchmark_20261123`，demo来源为 `m4_stage2_verified_20261123`；开发seed为130000–130002、130100–130102，demo为730000–730005、730100–730105，算法seed均为17/37。两轮均只从开发全臂结果选择固定基线，demo没有重新选基线。
+
+输入归档全部manifest文件哈希通过；M1–M3及共享协议代码单元与源快照一致。当前生成器按同seed复现对话、独立真值检查通过；当前M3重新回放的动作、反馈和指标与原归档逐行一致，并核验完整方法/算法seed/题目/四臂网格。本轮复用四臂评价表，未重新构造TF–IDF候选或计量构造耗时；这是数据复现和回放核验，不等于已经完成另一个独立在线执行器与预计算回放的等价实验。
+
+两份新manifest状态均为 `exploratory_complete_pending_review`，显式保存 `already_viewed=true`、`formal_generated=false`。`team_workspace/formal_runs.json`仍为`[]`。`test_m4_analysis.py`的17项测试、语法编译和`git diff --check`均通过；开发归档28个文件、demo归档29个文件的哈希复核通过，独立从原始回放重新聚合验证全部配对均值及每场景n=3/n=6正确。demo的原主效应表与此前完整demo在绝对容差1e-12内一致。组件测试和自动独立复算验证实现性质，不代替M3本人统计复核或正式研究证据。
+
+两轮runner快照略有不同：开发运行完成后增加了manifest必需文件检查和failure记录保护。两个实际输入的所需源文件均已列入原manifest，因此差异不改变本轮数值。每个run保留其真实执行时源码快照，不回写历史快照以假装两次运行使用完全相同文件。
+
+### 15.2 新增直接比较的实际结果
+
+以下为CTS减比较方法的对话平均效用差及探索性95%配对bootstrap区间；n是各场景独立对话数。所有数据已看过，区间用于诊断，不能作为新注册的确认性检验；多个探索区间不具备整体95%保证。
+
+| 阶段 | 场景 | n | 比较 | 效用差 | 95%区间 |
+|---|---|---:|---|---:|---|
+| development | stable | 3 | CTS−TS | +0.065150 | [0.041738, 0.083468] |
+| development | stable | 3 | CTS−RuleRouter | −0.031801 | [−0.035137, −0.028698] |
+| development | abrupt | 3 | CTS−TS | +0.160645 | [0.140101, 0.189289] |
+| development | abrupt | 3 | CTS−RuleRouter | −0.034321 | [−0.044844, −0.021372] |
+| demo | stable | 6 | CTS−TS | +0.081780 | [0.054379, 0.113190] |
+| demo | stable | 6 | CTS−RuleRouter | −0.030802 | [−0.035912, −0.025836] |
+| demo | abrupt | 6 | CTS−TS | +0.134228 | [0.111707, 0.152528] |
+| demo | abrupt | 6 | CTS−RuleRouter | −0.027951 | [−0.039594, −0.013454] |
+
+CTS在这些已看数据上高于TS，但两个场景均低于RuleRouter。demo中CTS相对固定基线的效用差为stable +0.049741、abrupt +0.062056；对应原协议的97.5%区间为[0.039285, 0.060722]、[0.041171, 0.089376]。这两项沿用主比较的计算定义，但数据阶段仍为demo，不能因输出文件名为`primary_effects.csv`就称为正式主检验。
+
+demo的stable场景，CTS相对TS准确率提高6.08个百分点、平均成本减少21.45；abrupt场景准确率提高13.42个百分点、平均成本近乎不变（−0.06）。相对RuleRouter，CTS在stable/abrupt准确率分别低2.75/2.64个百分点、成本分别多3.38/1.60。效用分解均核验通过。该模式支持保留RuleRouter并继续E2同模型特征消融，不能将TS与CTS差异全部归因于特征，也不能声称CTS击败所有方法。
+
+每个run的 `tables/direct_comparisons.csv` 包含两个直接比较的五项指标区间，`tables/effect_decomposition.csv` 包含三个CTS比较的五指标差；`paired_dialogue_differences.csv`、`episode_metrics.csv`和`replay.csv`可逐级回查，机器报告为`reports/E1_report.md`。进入Git的精简证据为 [development证据](M4_E1_m4_e1_development_20261126.json) 和 [demo证据](M4_E1_m4_e1_demo_20261126.json)；完整outputs归档仍需单独共享，精简证据不替代完整包。
+
+### 15.3 复跑方式和剩余工作
+
+```powershell
+python scripts/run_m4_experiment1.py --run-id m4_e1_demo_repeat_20261126
+python scripts/run_m4_experiment1.py --run-id m4_e1_development_repeat_20261126 --source-run outputs/development/m4_default_benchmark_20261123
+```
+
+使用新run ID；默认源为原始完整demo。入口只消费原始benchmark/demo归档，不能把新E1归档作为下一次`--source-run`。正式阶段还需在冻结中绑定新增分析代码及比较定义，取得真实审查材料、种子披露和批准，再运行每场景30条；本节没有把缺失记录改成通过，也没有将开发/demo结果冒充60条正式结果。
+
+## 16. 60条正式实验的种子与冻结材料准备（2026-11-26）
+
+用户要求准备60条候选种子、冻结方案及人工材料清单。本轮已完成相应非人工准备，交付目录为 `deliverables/m4_formal_preparation_20261126`，入口说明为 [HUMAN_CONFIRMATION.md](m4_formal_preparation_20261126/HUMAN_CONFIRMATION.md)。**准备包技术检查通过，但尚未批准、尚未冻结、未生成任何正式对话；60条正式实验仍未执行。** 实际状态见 [readiness.json](m4_formal_preparation_20261126/readiness.json)。
+
+候选范围为stable 930000–930029、abrupt 930100–930129，每场景30条。`seed_inventory.json`从当前仓库和可见归档保守排除154个对话种子，scan_errors和候选碰撞均为0；未共享的成员本地、失败和历史运行不在可见范围，仍需要逐人披露。候选只列入plan，没有用于生成数据或登记正式尝试。
+
+准备包保留原开发来源与7,200行全臂CSV的原始字节。20个M1–M3/共享协议代码单元与来源一致；现代码重新核验六条开发对话共1,800题真值、7项M2 fixture、40条抽查臂及4,200行M3方法回放。原全臂检索和构造耗时没有整表重算；`development_provenance.json`明确记录原manifest/代码/配置哈希、相容单元、formal_seed由null变为930000的元数据变更，以及重核与复用范围。该兼容字段不改变开发对话的实际生成参数，最终正式种子以evaluation_seeds列表为准。
+
+正式运行器现已接入E1的直接比较与分解；`code_paths`绑定notebook、runner、protocol、loader、analysis五项，新增 `scripts/m4_analysis.py`。必需的 `plan.analysis_spec`固定原两个主比较、探索性直接比较、对话级统计和实际效用阈值草案0.02；阈值仍需本人确认。本次只用已看12条demo验证正式分析构造器，原主次效应复现，E2–E5不在此E1正式执行范围。
+
+`plan.json`、`evidence.json`、`approval_request.json`及代码快照已齐。按用户要求预备的 `approvals.template.json`保持空姓名/日期和全false批准、披露标志；`approvals.json`不存在。这是待填写材料，不是替成员生成签名。最终每个members.Mx必须含真实name/date/approved，并据实填写seeds_disclosed和additional_dialogue_seeds；协议核验补充种子全部纳入绑定的plan.used_seeds。`seed_disclosure`与`statistics_review`模板仅为辅助表，不能替代最终批准中的字段。
+
+尚需M1/M2确认既有意见并关闭十题联合判定，M3确认统计方案与0.02阈值，M1–M5逐人披露全部种子并批准准确版本。清单逐题列出当前pending记录、责任人、字段和顺序，见包内 [人工确认清单](m4_formal_preparation_20261126/HUMAN_CONFIRMATION.md)。资料修改后先refresh，再preflight；有真实批准时refresh拒绝覆盖，应保留旧版本另建版本。完成材料不等于自动启动正式运行。
+
+```powershell
+python scripts/prepare_m4_formal.py refresh --package deliverables/m4_formal_preparation_20261126
+python scripts/prepare_m4_formal.py preflight --package deliverables/m4_formal_preparation_20261126
+```
+
+本轮47项测试通过，记录见包内test_verification.json；协议测试首次因沙箱虚拟临时卷的os.replace出现WinError 650，在工作区 `outputs/test_tmp` 重跑通过。记录为环境限制及复验，不记作算法失败或正式实验尝试。最终package_manifest列出的42个文件哈希全部通过（加manifest自身共43个文件）；remote_readback.json核对主线仍为0472e32，包内审查表Git blob与远端完全匹配。实际审查判定未改写，`team_workspace/formal_runs.json`仍为`[]`；再次preflight后的包状态为 `prepared_pending_human_confirmation`，technical_checks_passed=true、frozen=false、approved_for_execution=false、formal_generated=false。
+
+本版待签计划的canonical SHA256为 `68ee9dec4528a08131413bac75cee02bd16b88635969e9595752add07edbdf8e`；材料更新后以refresh生成的新approval_request为准，不沿用已过期哈希或批准。
+
+
+## 17. Fork PR 发布核验（2026-11-26）
+
+上述第16节记录原工作区准备过程；发布包已基于 main 0472e322 重新核验，保留主线导出网格检查。执行源码采用 LF，准备包在 .gitattributes 中保留原始字节，避免 Git 换行转换破坏来源绑定。六条开发真值、四十条审查臂、M3 数值和反馈检查，以及已有 demo 的正式分析回归均重新通过；47 项测试全通过，工作本结构通过。
+
+发布工作区清点有62个来源，原工作区125来源清点保存在 prior_workspace_seed_inventory.json；保守排除154个seed。发布清单现覆盖44个文件（另加清单自身），最新待签计划 SHA256 为 `d98d0d07f6843a754ec92b21c42ac2e869346512f56addb5a4971792376562a9`。原计划哈希只保留作历史记录，不用于本次批准。当前仍无 approvals.json，十题仍pending，formal_runs.json仍为空。
+
+干净克隆可直接preflight核验本包；完整demo回归需要另行共享outputs归档，缺少时相关五项测试跳过。E2–E7执行代码仍暂停且未纳入此PR。

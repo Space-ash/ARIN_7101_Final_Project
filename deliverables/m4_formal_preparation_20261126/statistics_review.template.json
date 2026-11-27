@@ -1,0 +1,16 @@
+{
+  "member": "M3",
+  "name": "",
+  "date": "",
+  "checks": {
+    "dialogue_unit_and_seed_averaging": false,
+    "development_only_baseline": false,
+    "two_primary_comparisons_95_and_975": false,
+    "direct_comparisons_exploratory_95": false,
+    "accuracy_cost_decomposition": false,
+    "practical_threshold_002": false,
+    "failures_negative_results_and_no_equivalence_from_nonsignificance": false
+  },
+  "confirmed": false,
+  "notes": ""
+}
