@@ -1,0 +1,91 @@
+{
+  "schema_version": "m1-1.0",
+  "generator": "ARIN7101 M1 reproducible synthetic template generator",
+  "episode_fields": {
+    "seed": "Non-negative integer RNG seed for this independent dialogue.",
+    "scenario": "stable or abrupt query-demand scenario.",
+    "history": "Ordered public messages; message IDs start at zero and are continuous.",
+    "probes": "Ordered query records; each end is an exclusive history prefix boundary."
+  },
+  "message_fields": {
+    "id": "Zero-based message index within the episode.",
+    "text": "English synthetic focus, fact, or distractor message."
+  },
+  "probe_fields": {
+    "t": "Zero-based query index.",
+    "question": "Question visible to a strategy.",
+    "end": "Exclusive upper bound; public history is history[:end].",
+    "gold": "Current value reconstructed from all facts before this query.",
+    "evidence": "Message ID of the last supporting statement before this query.",
+    "old_values": "Distinct earlier values for the queried project-attribute pair.",
+    "qtype": "recent when the question refers to the current focus; historical otherwise.",
+    "state": "A/B demand state; only abrupt changes from A to B at T//2."
+  },
+  "public_strategy_fields": [
+    "question",
+    "history"
+  ],
+  "evaluator_only_fields": [
+    "gold",
+    "evidence",
+    "old_values",
+    "qtype",
+    "state",
+    "scenario"
+  ],
+  "attributes_and_aliases": {
+    "dataset": "data source",
+    "language": "coding language",
+    "metric": "evaluation measure",
+    "deadline": "due date"
+  },
+  "message_templates": {
+    "focus": "Focus is project Pn. We are reviewing its latest requirements.",
+    "fact": "For project Pn: the <attribute or alias> is Vn. <shared system context>",
+    "distractor": "The next meeting will review progress and remaining questions."
+  },
+  "generation_rules": {
+    "projects_per_episode": 6,
+    "questions_per_episode": [
+      300
+    ],
+    "scenario_switch_index": "T//2; abrupt switches before query t=T//2.",
+    "initial_conflicts": "A configured fraction of project-attribute pairs begin with two distinct values.",
+    "updates_and_repetitions": "Each round writes a new value with update_probability; otherwise repeats the current value.",
+    "latest_evidence": "The latest statement is evidence even when it repeats the current value.",
+    "external_data_or_llm": false
+  },
+  "statistical_unit": "independent dialogue; queries within a dialogue are dependent",
+  "episodes": [
+    {
+      "seed": 130000,
+      "scenario": "stable",
+      "questions": 300
+    },
+    {
+      "seed": 130001,
+      "scenario": "stable",
+      "questions": 300
+    },
+    {
+      "seed": 130002,
+      "scenario": "stable",
+      "questions": 300
+    },
+    {
+      "seed": 130100,
+      "scenario": "abrupt",
+      "questions": 300
+    },
+    {
+      "seed": 130101,
+      "scenario": "abrupt",
+      "questions": 300
+    },
+    {
+      "seed": 130102,
+      "scenario": "abrupt",
+      "questions": 300
+    }
+  ]
+}

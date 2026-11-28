@@ -1,5 +1,5 @@
 member,name,status,goal,section,handoff_to,evidence,next_action
-M1,Liu Zhuoyang,review,设计并实现生成器和独立真值核查,m1-*,M2/M4,outputs/development/m1_development_20261109; deliverables/M1_notes.md; deliverables/M1_review_20261123.md; team_workspace/m2_handoff/audit_review.csv,十题真值与40条策略记录已复核；待本人确认意见及M1/M2联合判定并请M4接收数据来源和接口
+M1,Liu Zhuoyang,review,设计并实现生成器和独立真值核查,m1-*,M2/M4/M5,deliverables/m1_development_20261109; deliverables/M1_notes.md; deliverables/M1_review_20261123.md; team_workspace/m2_handoff/audit_review.csv,原始development run和M5背景页三例已归档；待M2/M4读回核对六条对话、seed、题数、审计及前缀重建；待M5确认接收；待本人确认贡献说明并完成M1/M2联合判定
 M2,He Junchen,review,实现四策略、回答器、成本与评价,m2-*,M1/M3/M4,deliverables/M2_notes.md; team_workspace/m2_handoff,六条对话已比对8/9/12并保留8；待M1/M2十题联合判定和M3/M4接收确认
 M3,,todo,推导并实现TS/CTS和回放,m3-*,M4,,先手算与推导，再实现Selector
 M4,,doing,实现集成、冻结、统计与归档,m4-*,M5,deliverables/M4_notes.md; m4 fixture checks passed,请M3复核统计；验收M1/M2/M3并实现调度冻结归档

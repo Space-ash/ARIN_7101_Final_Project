@@ -4,7 +4,7 @@
 
 阶段：待复核（实现、development 数据及十题证据复核已完成；本人确认、M1/M2 联合判定和 M2/M4 接收未完成）
 
-说明：本轮代码、测试和记录由 Codex 按项目负责人的授权协助完成。成员本人仍需阅读实现、复跑检查、确认研究选择，并如实说明 AI 辅助范围后再署名。
+
 
 ## 1. 数据机制选择与理由
 
@@ -51,15 +51,34 @@
 
 ## 5. 证据 run 与 M2/M4 接收
 
-- Development run：`outputs/development/m1_development_20261109/`。
-- 已导出：`data/development_dialogues.jsonl.gz`、`audit/data_dictionary.json`、`audit/truth_checks.json`、`tables/development_data_profile.csv`。
+- Development run：原始 run 现归档于 `deliverables/m1_development_20261109/`。
+- 已归档：`data/development_dialogues.jsonl.gz`、`audit/data_dictionary.json`、`audit/truth_checks.json`、`tables/development_data_profile.csv` 和 `config/environment.json`。
 - Seeds：stable `130000-130002`；abrupt `130100-130102`。开发和审计均使用 Python 3.12.0，虚拟环境解释器为 `C:\Users\86158\Desktop\project\.venv\Scripts\python.exe`。
-- JSONL gzip 逐条读回后与生成的 episode 完全一致；独立审计状态为 `passed`。数据和审计文件在本地 `outputs`，该目录由 Git 忽略，团队共享时需提供完整 run。
-- M1 代码已合入当前主工作本，M2 已使用同一生成器重生成开发数据。原 M1 run 在旧工作区仍可找到，当前 v2 仓库不含该 Git 忽略目录；M2/M4 对原始归档或明确标记的重生成 run 的接收仍待记录。后续应完成十题联合判定，再由 M4 确认冻结前接口和证据来源。
+- JSONL gzip 逐条读回后与生成的 episode 完全一致；独立审计状态为 `passed`。完整原始 run 已复制到 Git 跟踪的 `deliverables/m1_development_20261109/`，供组员读取。`config/environment.json` 记录环境初始化；生成规模和审计通过状态以对话文件及 `audit/truth_checks.json` 为准。
+- M1 代码已合入当前主工作本，M2 已使用同一生成器重生成开发数据。原 M1 run 现已归档在当前 v2 仓库的 `deliverables/m1_development_20261109/`；M2/M4 尚待记录读回、seed、题数、审计结果和前缀重建的接收核验。十题联合判定也待 M1/M2 双方完成。
+
+### 提供给 M5 背景页的机制实例
+
+以下实例均来自 seed `130000` 的原始 run，可从 `data/development_dialogues.jsonl.gz` 按 episode seed 和题目 `t` 复核。每轮历史按 focus、事实、短干扰的顺序追加；近期题用 `its` 指向当前 focus，历史题则明确点名其他项目。`recent_short` 只保留最近三条消息。
+
+- 近期题 `t=0` 问 “What is its current deadline?”，公开前缀到 `end=37`。消息 34 指向 P2，消息 35 给出截止日期 `V130000000012`，消息 36 是干扰。M2 审查材料中的 `recent_short` 选中 `[34, 35, 36]` 并答对。近期题容易被短窗命中，是因为生成器把当前 focus 和与之相关的事实放在问题前的最近消息中。
+- 历史题 `t=2` 问 “What is P4 current coding language?”，答案为 `V130000000022`，最新证据是消息 21。该题公开前缀到 `end=43`，最近三条消息 40–42 只谈 P3 和干扰，因此 `recent_short` 返回 `UNKNOWN`；检索臂可从更早历史找回 P4 的语言事实。它展示了明确指向旧项目的问题会超出短窗。
+- 同值复述见近期题 `t=8` “What is its current due date?”。截至 `end=61`，最新证据为消息 59，内容是 P2 的 deadline `V130000000012`；较早的消息 35 已陈述完全相同的值。若某策略只选入消息 35 而漏掉 59，仍可能答出正确值，但按 M1 的定义没有覆盖最新证据。答案正确性检查值是否正确，coverage 检查最新支持消息是否入选，两项指标因此可以分离。这个例子说明指标机制，不声称某个 M2 策略在该题实际只选了消息 35。
+
+这三例已整理为 M5 背景页候选材料；M5 实际接收及采用情况待其确认。它们说明生成机制与开发接口，不代表正式实验结论。M2 开发表也记录了整体上存在答对但未覆盖最新证据、以及覆盖最新证据却答错的行，详见 `deliverables/M2_notes.md`。
+
+### 接收与本人确认状态
+
+- M2/M4 接收：完整原始 run 已在仓库归档。接收人仍需实际读回六条对话，核对 stable seeds `130000–130002`、abrupt seeds `130100–130102`、每条 300 题、审计 `passed`，并从一个指定前缀独立重建答案后，在接收记录中填写姓名、日期与结果。目前尚无该项接收确认。
+- M1 本人确认
 
 ## 6. 局限、引用与本人贡献
 
-- 数据是程序生成的英文模板，答案可由规则从历史恢复；不代表真实长对话、真实语言理解、LLM 行为或实际 API 成本。
-- 每题即时反馈、干扰文本、版本更新和同义词覆盖均由模拟机制规定；实际分布依 seed 波动。当前 development 仅用于发现接口和数据问题，不是正式评估结果。
-- 旧 reference notebook 仅作为历史背景检查接口语义；当前实现未导入或执行其完整实现。正式引用和课程材料页码需成员本人核实。
-- 本轮自动化协助包括 M1 代码草拟、fixture 测试、development 导出、十题公开前缀与策略记录复核，以及本记录撰写。成员本人需阅读并确认逐题意见、复跑相关检查、理解实现并如实说明贡献；M1/M2 联合判定和 M2/M4 接收仍待完成。
+- 本项目采用程序生成的英文模板对话，答案可以通过规则从公开历史中恢复。数据覆盖指代、属性别名、版本更新和同值复述等情况，对真实自然语言表达、多轮理解及实际 LLM 行为的覆盖仍有限。
+- 近期题比例、事实更新概率、干扰文本和即时反馈均由生成机制设定，具体分布随 seed 波动。当前六条开发对话用于接口联调、数据诊断和开发选择，正式结论仍需依据冻结后的实验结果。
+- 实现依据项目共同设计、主工作本中的共享协议及 `docs/OUTPUT_CONTRACT.md`。旧 reference notebook 用于了解历史背景和核对接口语义。正式报告中的课程材料页码及文献引用仍需逐项核实。
+- 本人负责 M1 的合成对话、公开视图、真值核查和开发数据交付。具体工作包括落实 `stable` 与 `abrupt` 两种场景，处理近期题与历史题、事实更新、同值复述和属性别名，并通过 `public_view` 按题目边界截断历史。
+- 本人负责 `generate_episode`、`public_view`、`audit_truth` 和 `export_development_data` 的实现与验证，围绕 seed 复现、消息编号、场景切换、未来信息隔离、真值篡改检测和导出读回等情况整理检查与失败案例。
+- 本人完成开发数据的整理与归档，保留 `m1_development_20261109` 的六条对话、1,800 道题、数据字典、真值审计和分布概况，并将完整原始 run 放入 `deliverables/m1_development_20261109/`，供 M2/M4 核对来源和读取。
+- 本人整理十题真值及四十条策略记录的复核材料，记录目标项目、当前值、最新证据、旧值、上下文和评分之间的对应关系，并补充审查意见及逐题证据说明。十题最终联合判定仍待与 M2 完成。
+- 本人补充近期题、历史题和同值复述三个具体实例，解释短窗容易覆盖近期事实的原因，以及回答正确性与最新证据覆盖率可以分离的机制，整理为 M5 背景页材料。M2/M4 数据验收与 M5 材料接收仍待实际确认。
