@@ -3,4 +3,4 @@ M1,Liu Zhuoyang,review,设计并实现生成器和独立真值核查,m1-*,M2/M4,
 M2,He Junchen,review,实现四策略、回答器、成本与评价,m2-*,M1/M3/M4,deliverables/M2_notes.md; deliverables/m4_formal_preparation_20261126/audit_review.csv; deliverables/m4_formal_preparation_20261126/strategy_checks.json,六条对话已比对8/9/12并保留8；完成十题联合判定及M3/M4接收确认
 M3,,review,推导并实现TS/CTS和回放,m3-*,M4,deliverables/M3_notes.md; deliverables/m4_formal_preparation_20261126/method_checks.json; deliverables/M4_E1_m4_e1_demo_20261126.json,七方法已接入开发和demo；复核M4统计与冻结方案并在正式运行后复核效应表
 M4,,doing,实现集成、冻结、统计与归档,m4-*,M5,deliverables/M4_notes.md; deliverables/M4_E1_m4_e1_demo_20261126.json; deliverables/m4_formal_preparation_20261126/readiness.json,E1开发及demo和60条正式准备包已完成；收齐人工确认后冻结并运行正式60条及交付M3/M5复核
-M5,,todo,实现可视化、独立评估与汇报,m5-*,全组,deliverables/M5_notes.md; deliverables/SUBMISSION_CHECKLIST.md; outputs/demo/m4_e1_demo_20261126,使用现有demo实现三个读取制图导出接口及独立校验；完成图表解释和全组slides与视频
+M5,,doing,实现可视化、独立评估与汇报,m5-*,全组,deliverables/M5_notes.md; docs/M5_VISUAL_WORKFLOW.md; scripts/m5_visuals.py; scripts/m5_sensitivity.py; outputs/development/m5_e1_e4_20261128_v3,E1至E4开发图表共八张及报告已实现；29项测试通过；E2/E4报告完成academic-humanizer第二轮润色并保持数值与图表；待人工复核与完整轨迹交接以补E2题型选臂；后续接入正式图表与slides视频
